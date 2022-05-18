@@ -1,59 +1,58 @@
 package neu.siyangzhang;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.Console;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.net.Socket;
-import java.net.SocketException;
+import java.net.*;
+import java.io.*;
 
-/** This is Description */
 public class Client {
   public static void main(String[] args) {
+    // basic args check
     if (args.length < 2) {
       System.out.println("Example: java Client localhost 3200"); // since start server at localhost
       System.exit(1);
     }
 
-    if (args.length > 80) {
-      System.out.println("String should be less than 80 characters");
-      System.exit(1);
-    }
+
 
     String hostname = args[0];
     // System.out.println("hostname is: "+hostname);
 
     int port = Integer.parseInt(args[1]);
 
-    try (Socket socket = new Socket(hostname, port)) {
-      Console console = System.console();
+    try (Socket socket = new Socket(hostname, port)) { // create socket
+      Console console = System.console(); // create console to interact
       String request;
+
+      // create output stream and writer
       OutputStream outputStream = socket.getOutputStream();
       BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(outputStream));
 
+      // read user input, write it into output stream then flush
       request = console.readLine("Enter text: ");
+
+      if (request.length() > 80) {
+        System.out.println("String should be less than 80 characters");
+        System.exit(1);
+      }
+
       writer.write(request);
       writer.newLine();
       writer.flush();
       // System.out.println("request: " + request);
 
-      // retrieve response from server
+      // create input stream and reader then retrieve response from server
       InputStream inputStream = socket.getInputStream();
       BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
 
       String response = reader.readLine();
       System.out.println(response);
+      // close up
       System.out.println("Closing connection");
       outputStream.close();
       writer.close();
       reader.close();
 
 
-    } catch (SocketException socketException) {
+    } catch (SocketException socketException) { // socket and io exception handle
       System.out.println("Socket exception: " + socketException.getMessage());
       socketException.printStackTrace();
     } catch (IOException ioException) {
