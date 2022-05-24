@@ -5,3 +5,4 @@ Server receive: get(alexy) from 127.0.0.1 at 3201 and perform GET operation at 2
 Server receive: delete(alex) from 127.0.0.1 at 3201 and perform DELETE operation at 2022-05-23T23:41:46.821-0700 server time with server response: Delete value: 123with given key: alex
 Server receive: adfkaldf from 127.0.0.1 at 3201 and perform No operation operation at 2022-05-23T23:42:22.381-0700 server time with server response:  Received malformed request of length 8
 Server receive: adffasfdaf from 127.0.0.1 at 3201 and perform No operation operation at 2022-05-23T23:43:45.328-0700 server time with server response:  Received malformed request of length 10 from 127.0.0.1 : 3201
+Server receive: put(wang,123) from 127.0.0.1 at 3201 and perform PUT operation at 2022-05-24T13:13:57.684-0700 server time with server response: Put key: wang, value: 123 pair in map

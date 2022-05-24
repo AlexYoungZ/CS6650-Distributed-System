@@ -2,7 +2,8 @@ import java.net.*;
 import java.io.*;
 
 public class Client {
-  public static void main(String[] args) {
+
+  public static void main(String[] args) throws IOException {
     // basic args check
     if (args.length < 2) {
       System.out.println("Example: java Client localhost 3200");
@@ -12,24 +13,51 @@ public class Client {
     String hostname = args[0];
     // System.out.println("hostname is: "+hostname);
 
+    // initialize ClientLogger
+    ClientLogger clientLogger;
+    String exception;
+
     int port = Integer.parseInt(args[1]);
 
     try (Socket socket = new Socket(hostname, port)) { // create socket
       Console console = System.console(); // create console to interact
-      String request;
+
+      // TODO: where to add timeout mechanism
+      // set time out to 20s
+      socket.setSoTimeout(20000);
+
+      // get server address
+      // TODO: check valid
+      InetSocketAddress socketAddress = (InetSocketAddress) socket.getRemoteSocketAddress();
+      String serverAddress = socketAddress.getAddress().getHostAddress();
 
       // create output stream and writer
       OutputStream outputStream = socket.getOutputStream();
       BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(outputStream));
 
+      String request;
+      String response;
+      String operation;
+      String message;
+
       do {
         // read user input, write it into output stream then flush
         request = console.readLine("Enter text: ");
 
-//        if (request.length() > 80) {
-//          System.out.println("String should be less than 80 characters");
-//          System.exit(1);
-//        }
+        message = request.trim().toLowerCase();
+
+        if (message.contains("put") || message.contains("PUT")) {
+          operation = "PUT";
+        } else if (message.contains("get") || message.contains("GET")) {
+          operation = "GET";
+        } else if (message.contains("delete") || message.contains("DELETE")) {
+          operation = "DELETE";
+        } else {
+          operation = "No valid operation";
+        }
+
+        // write request into client log
+        ClientLogger.clientLoggingRequest(request, operation, port, hostname);
 
         writer.write(request);
         writer.newLine();
@@ -40,7 +68,12 @@ public class Client {
         InputStream inputStream = socket.getInputStream();
         BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
 
-        String response = reader.readLine();
+        response = reader.readLine();
+
+        // write server response into client log
+        ClientLogger.clientLoggingResponse(response, operation, serverAddress);
+
+        // display server response at client side
         System.out.println(response);
 
       } while (!request.equals("quit"));
@@ -49,14 +82,26 @@ public class Client {
       System.out.println("Closing connection");
       outputStream.close();
       writer.close();
-//      reader.close();
+      //      reader.close();
 
     } catch (SocketException socketException) { // socket and io exception handle
-      System.out.println("Socket exception: " + socketException.getMessage());
+      exception = socketException.toString();
+      System.err.println("Socket exception: " + socketException.getMessage());
       socketException.printStackTrace();
+      ClientLogger.clientLoggingException(exception);
+
+    } catch (InterruptedIOException interruptedIOException) {
+      exception = interruptedIOException.toString();
+
+      System.err.println("Server timed out: " + interruptedIOException.getMessage());
+      interruptedIOException.printStackTrace();
+      ClientLogger.clientLoggingException(exception);
+
     } catch (IOException ioException) {
-      System.out.println("IO exception: " + ioException.getMessage());
+      exception = ioException.toString();
+      System.err.println("Network I/O exception: " + ioException.getMessage());
       ioException.printStackTrace();
+      ClientLogger.clientLoggingException(exception);
     }
   }
 }

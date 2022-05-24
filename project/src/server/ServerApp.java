@@ -47,8 +47,10 @@ public class ServerApp {
 
         do {
           request = reader.readLine();
-          Integer len = request.length();
+          // display request received at server side:
+          System.out.println("Received request: " + request);
 
+          Integer len = request.length();
           message = request.trim().toLowerCase();
 
           String key;
@@ -97,6 +99,7 @@ public class ServerApp {
             operation = "No operation";
           }
 
+          // display response at server side
           System.out.println("Server response: " + response);
 
           //  write to server log file use Server logger
