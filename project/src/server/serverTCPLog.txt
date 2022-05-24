@@ -1,0 +1,7 @@
+Server receive: put   (alex, 123) from 127.0.0.1 at 3201 and perform PUT at 2022-05-23T23:39:38.901-0700 server time and server response: Put key: alex, value: 123 pair in map
+Server receive: put   (alex, 123) from 127.0.0.1 at 3201 and perform PUT operation at 2022-05-23T23:40:45.286-0700 server time with server response: Put key: alex, value: 123 pair in map
+Server receive: GET    (alex) from 127.0.0.1 at 3201 and perform GET operation at 2022-05-23T23:41:02.813-0700 server time with server response: Get value: 123 with given key: alex
+Server receive: get(alexy) from 127.0.0.1 at 3201 and perform GET operation at 2022-05-23T23:41:23.648-0700 server time with server response: Didn't find matching value with given key: alexy
+Server receive: delete(alex) from 127.0.0.1 at 3201 and perform DELETE operation at 2022-05-23T23:41:46.821-0700 server time with server response: Delete value: 123with given key: alex
+Server receive: adfkaldf from 127.0.0.1 at 3201 and perform No operation operation at 2022-05-23T23:42:22.381-0700 server time with server response:  Received malformed request of length 8
+Server receive: adffasfdaf from 127.0.0.1 at 3201 and perform No operation operation at 2022-05-23T23:43:45.328-0700 server time with server response:  Received malformed request of length 10 from 127.0.0.1 : 3201
