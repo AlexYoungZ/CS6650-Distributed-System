@@ -1,12 +1,24 @@
-import java.net.*;
-import java.io.*;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.net.InetSocketAddress;
+import java.net.ServerSocket;
+import java.net.Socket;
 import java.util.HashMap;
 
+/** The type Server app. */
 public class ServerApp {
 
-  public static void main(String[] args) {
+  /**
+   * The entry point of application.
+   *
+   * @param args the input arguments
+   */
+  public static void main(String[] args) throws IOException {
 
     // basic args check
     if (args.length < 1) {
@@ -19,6 +31,8 @@ public class ServerApp {
 
     // initialize ServerLogger
     ServerLogger serverLogger;
+
+    String exception;
 
     int port = Integer.parseInt(args[0]);
 
@@ -88,6 +102,8 @@ public class ServerApp {
             if (map.containsKey(key)) {
               value = map.remove(key);
               response = "Delete value: " + value + " with given key: " + key;
+            } else if (message.contains("quit")) {
+              response = "Client close connection";
             } else {
               response = "Didn't find matching value with given key: " + key;
             }
@@ -119,12 +135,18 @@ public class ServerApp {
         socket.close();
       }
 
-    } catch (IOException ioException) { // IO exception handling
+    } catch (IOException ioException) {
+      // IO exception handling and server log exception
+      exception = ioException.toString();
       System.out.println("IO exception: " + ioException.getMessage());
       ioException.printStackTrace();
+      ServerLogger.serverExceptionLogging(exception);
     } catch (NullPointerException nullPointerException) {
+      // null pointer exception handling and server log exception
+      exception = nullPointerException.toString();
       System.out.println("Client input is invalid: " + nullPointerException.getMessage());
       nullPointerException.printStackTrace();
+      ServerLogger.serverExceptionLogging(exception);
     }
   }
 }

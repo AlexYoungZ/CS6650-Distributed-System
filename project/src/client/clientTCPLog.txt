@@ -1,8 +1,8 @@
-Client send: put(bill,320) from localhost at 3200 to perform PUT operation at 2022-05-24T13:10:16.865-0700 client time
-Client get: java.net.SocketTimeoutException: Read timed out at 2022-05-24T13:10:36.891-0700 client time
-Client send: put(wang, 123) from localhost at 3200 to perform PUT operation at 2022-05-24T13:13:17.846-0700 client time
-Client receive: Server response: )321 ,GNAW(TUP from 127.0.0.1 with PUT operation at 2022-05-24T13:13:17.880-0700 client time
-Client send: quit from localhost at 3200 to perform No valid operation operation at 2022-05-24T13:13:30.205-0700 client time
-Client receive: Server response: TIUQ from 127.0.0.1 with No valid operation operation at 2022-05-24T13:13:30.206-0700 client time
-Client send: put(wang,123) from localhost at 3201 to perform PUT operation at 2022-05-24T13:13:57.601-0700 client time
-Client receive: Server response: Put key: wang, value: 123 pair in map from 127.0.0.1 with PUT operation at 2022-05-24T13:13:57.697-0700 client time
+Client send: put(alex,111) from localhost at 3201 to perform PUT operation at 2022-05-24 22:17:07.914 client time
+Client receive: Put key: alex, value: 111 pair in map from localhost/127.0.0.1 with PUT operation at 2022-05-24 22:17:08.003 client time
+Client send: quit from localhost at 3201 to perform No valid operation operation at 2022-05-24 22:17:12.991 client time
+Client receive: Put key: alex, value: 111 pair in map from localhost/127.0.0.1 with No valid operation operation at 2022-05-24 22:17:12.991 client time
+Client send: put(wang, 123) from localhost at 3201 to perform PUT operation at 2022-05-24 22:19:37.137 client time
+Client receive: Put key: wang, value: 123 pair in map from localhost/127.0.0.1 with PUT operation at 2022-05-24 22:19:37.244 client time
+Client send: quit from localhost at 3201 to perform No valid operation operation at 2022-05-24 22:19:39.879 client time
+Client receive: Put key: wang, value: 123 pair in map from localhost/127.0.0.1 with No valid operation operation at 2022-05-24 22:19:39.880 client time

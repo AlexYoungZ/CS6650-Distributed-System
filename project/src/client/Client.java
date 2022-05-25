@@ -1,8 +1,25 @@
-import java.net.*;
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.Console;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.InterruptedIOException;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.net.InetSocketAddress;
+import java.net.Socket;
+import java.net.SocketException;
 
+/** The type Client. */
 public class Client {
 
+  /**
+   * The entry point of application.
+   *
+   * @param args the input arguments
+   * @throws IOException the io exception
+   */
   public static void main(String[] args) throws IOException {
     // basic args check
     if (args.length < 2) {
@@ -22,8 +39,7 @@ public class Client {
     try (Socket socket = new Socket(hostname, port)) { // create socket
       Console console = System.console(); // create console to interact
 
-      // TODO: where to add timeout mechanism
-      // set time out to 20s
+      // timeout mechanism: set waiting time out to 20s
       socket.setSoTimeout(20000);
 
       // get server address
