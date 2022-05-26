@@ -40,6 +40,7 @@ public class TCPClient {
       Console console = System.console(); // create console to interact
 
       // timeout mechanism: set waiting time out to 20s
+      // work when server failure or waiting in queue over 20s
       socket.setSoTimeout(20000);
 
       // get server address

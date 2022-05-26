@@ -41,6 +41,8 @@ public class UDPClient {
     try { // create socket
       DatagramSocket clientSocket = new DatagramSocket();
       // timeout mechanism: set waiting time out to 20s
+      // compared with single thread TCP, since UDP use datagram to transmit message, the timeout
+      // mechanism will work under server failure, no congestion and waiting in queue
       clientSocket.setSoTimeout(20000);
       // get server address
       InetAddress serverAddress = InetAddress.getByName(hostname);
@@ -72,7 +74,6 @@ public class UDPClient {
             // close up
             ClientLogger.clientLoggingExit();
             System.out.println("Client quit, closing UDP client");
-            // todo handle close up exception, format UDP log for both client and server
             clientSocket.close();
             break;
           }
