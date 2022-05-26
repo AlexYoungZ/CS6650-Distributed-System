@@ -3,6 +3,7 @@ import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.util.HashMap;
+import java.util.Objects;
 
 /** The type Server app. */
 public class UDPServer {
@@ -32,15 +33,17 @@ public class UDPServer {
 
     int port = Integer.parseInt(args[0]);
 
-    try (DatagramSocket serverSocket =
-        new DatagramSocket(port) // create server socket on given port
-    ) {
+    try {
+      // create server socket on given port
+      DatagramSocket serverSocket = new DatagramSocket(port);
       System.out.println("Server is listening on port: " + port);
 
-      while (true) {
-        byte[] buffer = new byte[256];
+      byte[] receivedBuffer = new byte[256];
+      byte[] sentBuffer = new byte[256];
 
-        requestPacket = new DatagramPacket(buffer, buffer.length);
+      while (true) { // todo check this order
+
+        requestPacket = new DatagramPacket(receivedBuffer, receivedBuffer.length);
         serverSocket.receive(requestPacket);
 
         // get client address and port
@@ -51,84 +54,86 @@ public class UDPServer {
 
         // get request sent from client, only accept PUT/GET/DELETE with a valid KEY
         String request = new String(requestPacket.getData(), 0, requestPacket.getLength());
-        String message;
+        String message = request.trim().toLowerCase();
 
-        do {
-          //          request = reader.readLine();
-          // display request received at server side:
-          System.out.println("Received request: " + request);
+        //        do {
+        // display request received at server side:
+        //          System.out.println("Received request: " + request);
 
-          Integer len = request.length();
-          message = request.trim().toLowerCase();
+        // only accept no-empty request
+        //        if (request.length() != 0) {
+        Integer len = request.length();
+        String key;
+        String value;
+        String operation;
+        String pair;
+        String response;
 
-          String key;
-          String value;
-          String operation;
-          String pair;
-          String response;
+        if (message.contains("put") || message.contains("PUT")) {
+          operation = "PUT";
+          pair = message.substring(message.indexOf("(") + 1, message.lastIndexOf(")"));
+          key = pair.split(",")[0].trim();
+          value = pair.split(",")[1].trim();
 
-          if (message.contains("put") || message.contains("PUT")) {
-            operation = "PUT";
-            pair = message.substring(message.indexOf("(") + 1, message.lastIndexOf(")"));
-            key = pair.split(",")[0].trim();
-            value = pair.split(",")[1].trim();
+          //            System.out.println("key: " + key);
+          //            System.out.println("value: " + value);
+          map.put(key, value);
+          response = "Put key: " + key + ", value: " + value + " pair in map";
+        } else if (message.contains("get") || message.contains("GET")) {
+          operation = "GET";
 
-            System.out.println("key: " + key);
-            System.out.println("value: " + value);
-            map.put(key, value);
-            response = "Put key: " + key + ", value: " + value + " pair in map";
-          } else if (message.contains("get") || message.contains("GET")) {
-            operation = "GET";
-
-            key = message.substring(message.indexOf("(") + 1, message.lastIndexOf(")"));
-            System.out.println("key: " + key);
-            if (map.containsKey(key)) {
-              value = map.get(key);
-              response = "Get value: " + value + " with given key: " + key;
-            } else {
-              response = "Didn't find matching value with given key: " + key;
-            }
-          } else if (message.contains("delete") || message.contains("DELETE")) {
-            operation = "DELETE";
-
-            key = message.substring(message.indexOf("(") + 1, message.lastIndexOf(")"));
-            System.out.println("key: " + key);
-            if (map.containsKey(key)) {
-              value = map.remove(key);
-              response = "Delete value: " + value + " with given key: " + key;
-            } else if (message.contains("quit")) {
-              response = "All packets sent done, client close connection"; // TODO still need this?
-            } else {
-              response = "Didn't find matching value with given key: " + key;
-            }
+          key = message.substring(message.indexOf("(") + 1, message.lastIndexOf(")"));
+          //            System.out.println("key: " + key);
+          if (map.containsKey(key)) {
+            value = map.get(key);
+            response = "Get value: " + value + " with given key: " + key;
           } else {
-            response =
-                String.format(
-                    " Received malformed request of length %d from %s : %d",
-                    len, clientAddress, clientPort);
-            operation = "No operation";
+            response = "Didn't find matching value with given key: " + key;
           }
+        } else if (message.contains("delete") || message.contains("DELETE")) {
+          operation = "DELETE";
 
-          // display response at server side
-          System.out.println("Server response: " + response);
+          key = message.substring(message.indexOf("(") + 1, message.lastIndexOf(")"));
+          //            System.out.println("key: " + key);
+          if (map.containsKey(key)) {
+            value = map.remove(key);
+            response = "Delete value: " + value + " with given key: " + key;
+          } else if (message.contains("quit")) {
+            response = "All packets sent done, client close connection"; // TODO still need this?
+          } else {
+            response = "Didn't find matching value with given key: " + key;
+          }
+        } else if (Objects.equals(message, "quit")) {
+          // close connection
+          System.out.println("Closing connection");
+          //          serverSocket.close(); // todo decide if stop, guess not
+          response =
+              String.format(" Received quit request from %s : %d", clientAddress, clientPort);
+          operation = "No operation";
+        } else {
+          response =
+              String.format(
+                  " Received malformed request of length %d from %s : %d",
+                  len, clientAddress, clientPort);
+          operation = "No operation";
+        }
 
-          //  write to server log file use Server logger
-          ServerLogger.serverLogging(
-              request, response, operation, clientPort, clientAddress.toString());
+        // display response at server side
+        System.out.println("Server response: " + response);
 
-          // create response packet
-          responsePacket =
-              new DatagramPacket(
-                  response.getBytes(), response.getBytes().length, clientAddress, clientPort);
+        //  write to server log file use Server logger todo fix this part
+        ServerLogger.serverLogging(
+            request, response, operation, clientPort, clientAddress.toString());
 
-          serverSocket.send(responsePacket);
+        sentBuffer = response.getBytes();
 
-        } while (!message.equals("quit"));
+        // create response packet
+        responsePacket =
+            new DatagramPacket(sentBuffer, sentBuffer.length, clientAddress, clientPort);
 
-        // close connection
-        System.out.println("Closing connection");
-        serverSocket.close();
-        break;
+        serverSocket.send(responsePacket);
+        //        serverSocket.close(); // todo should close here?
+        //        }
       }
 
     } catch (IOException ioException) {

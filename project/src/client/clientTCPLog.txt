@@ -1,8 +1,20 @@
-Client send: put(alex,111) from localhost at 3201 to perform PUT operation at 2022-05-24 22:17:07.914 client time
-Client receive: Put key: alex, value: 111 pair in map from localhost/127.0.0.1 with PUT operation at 2022-05-24 22:17:08.003 client time
-Client send: quit from localhost at 3201 to perform No valid operation operation at 2022-05-24 22:17:12.991 client time
-Client receive: Put key: alex, value: 111 pair in map from localhost/127.0.0.1 with No valid operation operation at 2022-05-24 22:17:12.991 client time
-Client send: put(wang, 123) from localhost at 3201 to perform PUT operation at 2022-05-24 22:19:37.137 client time
-Client receive: Put key: wang, value: 123 pair in map from localhost/127.0.0.1 with PUT operation at 2022-05-24 22:19:37.244 client time
-Client send: quit from localhost at 3201 to perform No valid operation operation at 2022-05-24 22:19:39.879 client time
-Client receive: Put key: wang, value: 123 pair in map from localhost/127.0.0.1 with No valid operation operation at 2022-05-24 22:19:39.880 client time
+Client send: put(jack, 222) from localhost at 3201 to perform PUT operation at 2022-05-25 11:08:57.218 client time
+Client receive: Put key: jack, value: 222 pair in map from localhost/127.0.0.1 with PUT operation at 2022-05-25 11:08:57.339 client time
+Client send: put(el, 121) from localhost at 3201 to perform PUT operation at 2022-05-25 11:28:57.129 client time
+Client receive: Put key: el, value: 121 pair in map from localhost/127.0.0.1 with PUT operation at 2022-05-25 11:28:57.239 client time
+Client send: put(alexy, 333) from localhost at 3201 to perform PUT operation at 2022-05-25 11:41:33.823 client time
+Client receive: Put key: alexy, value: 333 pair in map from localhost/127.0.0.1 with PUT operation at 2022-05-25 11:41:33.930 client time
+Client send: put(alex,123) from localhost at 3201 to perform PUT operation at 2022-05-25 12:08:29.190 client time
+Client receive: Put key: alex, value: 123 pair in map from localhost/127.0.0.1 with PUT operation at 2022-05-25 12:08:29.322 client time
+Client send: put(alex,111) from localhost at 3201 to perform PUT operation at 2022-05-25 13:00:51.344 client time
+Client receive: Put key: alex, value: 111 pair in map from localhost/127.0.0.1 with PUT operation at 2022-05-25 13:00:51.468 client time
+Client send: put(bill,123) from localhost at 3201 to perform PUT operation at 2022-05-25 14:16:55.286 client time
+Client receive: Put key: bill, value: 123 pair in map from localhost/127.0.0.1 with PUT operation at 2022-05-25 14:16:55.357 client time
+Client send: [A from localhost at 3201 to perform No valid operation operation at 2022-05-25 14:18:01.342 client time
+Client get: SocketException: Socket closed at 2022-05-25 14:18:01.344 client time
+Client send: put(bill,1234) from localhost at 3201 to perform PUT operation at 2022-05-25 14:18:11.441 client time
+Client receive: Put key: bill, value: 1234 pair in map from localhost/127.0.0.1 with PUT operation at 2022-05-25 14:18:11.462 client time
+Client send: quit from localhost at 3201 to perform No valid operation operation at 2022-05-25 14:19:06.436 client time
+Client get: SocketException: Socket closed at 2022-05-25 14:19:06.439 client time
+Client send: put(alex,123) from localhost at 3201 to perform PUT operation at 2022-05-25 14:24:09.622 client time
+Client receive: Put key: alex, value: 123 pair in map from localhost/127.0.0.1 with PUT operation at 2022-05-25 14:24:09.750 client time
