@@ -47,12 +47,14 @@ public class UDPClient {
       // create console to interact
       Console console = System.console();
 
-      do {
+      while (true) {
         byte[] buffer = new byte[256];
         // read user input
         request = console.readLine("Enter text: ");
         //        System.out.println("Check if this doesn't change: " + request);
 
+        // only accept valid and meaningful message, first filter layer from client side
+        // avoid the case like accidentally press Enter
         if (request.length() != 0) {
           message = request.trim().toLowerCase();
 
@@ -66,6 +68,15 @@ public class UDPClient {
             operation = "No valid operation";
           }
 
+          if (Objects.equals(request, "quit")) {
+            // close up
+            ClientLogger.clientLoggingExit();
+            System.out.println("Client quit, closing UDP client");
+            // todo handle close up exception, format UDP log for both client and server
+            clientSocket.close();
+            break;
+          }
+
           // write request into client log
           ClientLogger.clientLoggingRequest(request, operation, port, hostname);
 
@@ -75,7 +86,7 @@ public class UDPClient {
                   request.getBytes(), request.getBytes().length, serverAddress, port);
           clientSocket.send(requestPacket);
 
-          System.out.println("request: " + request);
+          //          System.out.println("request: " + request);
 
           // create receive packet to receive response from server
           responsePacket = new DatagramPacket(buffer, buffer.length);
@@ -87,17 +98,9 @@ public class UDPClient {
           ClientLogger.clientLoggingResponse(response, operation, serverAddress.toString());
 
           // display server response at client side
-          System.out.println(response);
-
-          // TODO: close here?
-          clientSocket.close();
+          System.out.println("Server response: " + response);
         }
-      } while (!Objects.equals(request, "quit"));
-      // close up
-      System.out.println("Closing UDP client");
-      // todo handle close up exception, format UDP log for both client and server
-      clientSocket.close();
-
+      }
 
     } catch (SocketException socketException) { // socket and io exception handle
       exception = socketException.toString();

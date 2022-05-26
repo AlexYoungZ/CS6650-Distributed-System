@@ -113,4 +113,24 @@ public class ClientLogger {
     bw.newLine();
     bw.close();
   }
+
+  public static void clientLoggingExit() throws IOException {
+
+    String log;
+    String exception;
+    String netExceptionPrefix = "java.net.";
+    String ioExceptionPrefix = "java.io.";
+    //  "yyyy-MM-dd HH:mm:ss.SSSZ"
+    String time =
+        new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS")
+            .format(new Date(System.currentTimeMillis()));
+
+    log = "Client quit at " + time + " client time";
+
+    FileWriter fw = new FileWriter("clientTCPLog.txt", true);
+    BufferedWriter bw = new BufferedWriter(fw);
+    bw.write(log);
+    bw.newLine();
+    bw.close();
+  }
 }

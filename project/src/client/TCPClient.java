@@ -43,7 +43,6 @@ public class TCPClient {
       socket.setSoTimeout(20000);
 
       // get server address
-      // TODO: check valid
       InetSocketAddress socketAddress = (InetSocketAddress) socket.getRemoteSocketAddress();
       String serverAddress = socketAddress.getAddress().getHostAddress();
 
@@ -54,7 +53,7 @@ public class TCPClient {
       String request;
       String response;
       String operation;
-      String message;
+      String message; // request after clean up
 
       do {
         // read user input, write it into output stream then flush

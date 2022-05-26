@@ -41,7 +41,7 @@ public class UDPServer {
       byte[] receivedBuffer = new byte[256];
       byte[] sentBuffer = new byte[256];
 
-      while (true) { // todo check this order
+      while (true) {
 
         requestPacket = new DatagramPacket(receivedBuffer, receivedBuffer.length);
         serverSocket.receive(requestPacket);
@@ -56,17 +56,13 @@ public class UDPServer {
         String request = new String(requestPacket.getData(), 0, requestPacket.getLength());
         String message = request.trim().toLowerCase();
 
-        //        do {
-        // display request received at server side:
-        //          System.out.println("Received request: " + request);
 
-        // only accept no-empty request
-        //        if (request.length() != 0) {
+        // initialize parameters
         Integer len = request.length();
         String key;
         String value;
-        String operation;
-        String pair;
+        String operation; // operation after formatting
+        String pair; // key,value
         String response;
 
         if (message.contains("put") || message.contains("PUT")) {
@@ -106,7 +102,7 @@ public class UDPServer {
         } else if (Objects.equals(message, "quit")) {
           // close connection
           System.out.println("Closing connection");
-          //          serverSocket.close(); // todo decide if stop, guess not
+          //          serverSocket.close();
           response =
               String.format(" Received quit request from %s : %d", clientAddress, clientPort);
           operation = "No operation";
@@ -121,7 +117,7 @@ public class UDPServer {
         // display response at server side
         System.out.println("Server response: " + response);
 
-        //  write to server log file use Server logger todo fix this part
+        //  write to server log file use Server logger
         ServerLogger.serverLogging(
             request, response, operation, clientPort, clientAddress.toString());
 
