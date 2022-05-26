@@ -95,7 +95,9 @@ public class UDPClient {
       } while (!Objects.equals(request, "quit"));
       // close up
       System.out.println("Closing UDP client");
+      // todo handle close up exception, format UDP log for both client and server
       clientSocket.close();
+
 
     } catch (SocketException socketException) { // socket and io exception handle
       exception = socketException.toString();
