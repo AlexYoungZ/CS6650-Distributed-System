@@ -1,0 +1,13 @@
+Client send: put(alex,123) from localhost at 3201 to perform PUT operation at 2022-05-27 15:22:21.829 client time
+Client receive:  from localhost/127.0.0.1 with PUT operation at 2022-05-27 15:22:21.932 client time
+Client send: put(alex,13) from localhost at 3201 to perform PUT operation at 2022-05-27 15:50:50.316 client time
+Client receive: Put key: alex, value: 13 pair in map from localhost/127.0.0.1 with PUT operation at 2022-05-27 15:50:50.425 client time
+Client quit at 2022-05-27 16:14:08.133 client time
+Client send: put(alex,111) from localhost at 3201 to perform PUT operation at 2022-05-27 16:14:49.042 client time
+Client receive server response: Server response: Put key: alex, value: 111 pair in map from 127.0.0.1 with PUT operation at 2022-05-27 16:14:49.130 client time
+Client send: get(alex,111) from localhost at 3201 to perform GET operation at 2022-05-27 16:15:00.055 client time
+Client receive server response: Server response: Didn't find matching value with given key: alex,111 from 127.0.0.1 with GET operation at 2022-05-27 16:15:00.057 client time
+Client send: get(alex) from localhost at 3201 to perform GET operation at 2022-05-27 16:15:05.308 client time
+Client receive server response: Server response: Get value: 111 with given key: alex from 127.0.0.1 with GET operation at 2022-05-27 16:15:05.310 client time
+Client send: quit from localhost at 3201 to perform No valid operation operation at 2022-05-27 16:15:11.675 client time
+Client receive server response: Server response:  Received quit request from 127.0.0.1 : 3201 from 127.0.0.1 with No valid operation operation at 2022-05-27 16:15:11.680 client time

@@ -3,13 +3,12 @@ import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.util.HashMap;
-import java.util.Objects;
 
-/** The type Server app. */
+/** The UDP Server. */
 public class UDPServer {
 
   /**
-   * The entry point of application.
+   * The entry point of UDPServer.
    *
    * @param args the input arguments
    */
@@ -22,10 +21,9 @@ public class UDPServer {
     }
 
     // initialize hashmap
-    HashMap<String, String> map = new HashMap<String, String>();
+    HashMap<String, String> map = new HashMap<>();
 
-    // initialize ServerLogger
-    ServerLogger serverLogger;
+    // initialize Datagram packet
     DatagramPacket requestPacket;
     DatagramPacket responsePacket;
 
@@ -48,78 +46,30 @@ public class UDPServer {
 
         // get client address and port
         InetAddress clientAddress = requestPacket.getAddress();
+        String clientAddressStr = clientAddress.toString();
         int clientPort = requestPacket.getPort();
 
-        System.out.println("Receive packet from " + clientAddress.toString() + " : " + clientPort);
+        System.out.println("Receive packet from " + clientAddressStr + " : " + clientPort);
 
         // get request sent from client, only accept PUT/GET/DELETE with a valid KEY
         String request = new String(requestPacket.getData(), 0, requestPacket.getLength());
-        String message = request.trim().toLowerCase();
-
 
         // initialize parameters
-        Integer len = request.length();
-        String key;
-        String value;
         String operation; // operation after formatting
-        String pair; // key,value
         String response;
 
-        if (message.contains("put") || message.contains("PUT")) {
-          operation = "PUT";
-          pair = message.substring(message.indexOf("(") + 1, message.lastIndexOf(")"));
-          key = pair.split(",")[0].trim();
-          value = pair.split(",")[1].trim();
 
-          //            System.out.println("key: " + key);
-          //            System.out.println("value: " + value);
-          map.put(key, value);
-          response = "Put key: " + key + ", value: " + value + " pair in map";
-        } else if (message.contains("get") || message.contains("GET")) {
-          operation = "GET";
+        // get Operation type
+        operation = UDPHandler.getOperationType(request);
 
-          key = message.substring(message.indexOf("(") + 1, message.lastIndexOf(")"));
-          //            System.out.println("key: " + key);
-          if (map.containsKey(key)) {
-            value = map.get(key);
-            response = "Get value: " + value + " with given key: " + key;
-          } else {
-            response = "Didn't find matching value with given key: " + key;
-          }
-        } else if (message.contains("delete") || message.contains("DELETE")) {
-          operation = "DELETE";
-
-          key = message.substring(message.indexOf("(") + 1, message.lastIndexOf(")"));
-          //            System.out.println("key: " + key);
-          if (map.containsKey(key)) {
-            value = map.remove(key);
-            response = "Delete value: " + value + " with given key: " + key;
-          } else if (message.contains("quit")) {
-            response = "All packets sent done, client close connection"; // TODO still need this?
-          } else {
-            response = "Didn't find matching value with given key: " + key;
-          }
-        } else if (Objects.equals(message, "quit")) {
-          // close connection
-          System.out.println("Closing connection");
-          //          serverSocket.close();
-          response =
-              String.format(" Received quit request from %s : %d", clientAddress, clientPort);
-          operation = "No operation";
-        } else {
-          response =
-              String.format(
-                  " Received malformed request of length %d from %s : %d",
-                  len, clientAddress, clientPort);
-          operation = "No operation";
-        }
+        // call UDP handler to handle client request and return response
+        response = UDPHandler.handleUDPRequest(request, map, clientAddressStr, port);
 
         // display response at server side
         System.out.println("Server response: " + response);
 
         //  write to server log file use Server logger
-        ServerLogger.serverLogging(
-            request, response, operation, clientPort, clientAddress.toString());
+        ServerLogger.serverLogging(request, response, operation, clientPort, clientAddressStr);
 
         sentBuffer = response.getBytes();
 
@@ -128,8 +78,7 @@ public class UDPServer {
             new DatagramPacket(sentBuffer, sentBuffer.length, clientAddress, clientPort);
 
         serverSocket.send(responsePacket);
-        //        serverSocket.close(); // todo should close here?
-        //        }
+        //        serverSocket.close();
       }
 
     } catch (IOException ioException) {

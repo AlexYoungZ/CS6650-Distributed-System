@@ -11,13 +11,13 @@ import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.net.SocketException;
 
-/** The type Client. */
+/** The TCP Client. */
 public class TCPClient {
 
   /**
-   * The entry point of application.
+   * The entry point of TCPClient.
    *
-   * @param args the input arguments
+   * @param args the input arguments <address> <port> like localhost 3200
    * @throws IOException the io exception
    */
   public static void main(String[] args) throws IOException {
@@ -32,15 +32,19 @@ public class TCPClient {
 
     // initialize ClientLogger
     ClientLogger clientLogger;
+    // initialize exception message string
     String exception;
 
     int port = Integer.parseInt(args[1]);
 
-    try (Socket socket = new Socket(hostname, port)) { // create socket
-      Console console = System.console(); // create console to interact
+    // create socket with given hostname and port number
+    try (Socket socket = new Socket(hostname, port)) {
+      // create console to interact
+      Console console = System.console();
 
       // timeout mechanism: set waiting time out to 20s
-      // work when server failure or waiting in queue over 20s
+      // for TCP case, timeout mechanism works when server failure or
+      // a client waiting in queue over 20s
       socket.setSoTimeout(20000);
 
       // get server address
@@ -51,10 +55,11 @@ public class TCPClient {
       OutputStream outputStream = socket.getOutputStream();
       BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(outputStream));
 
+      // initialize request, response and operation variables
       String request;
       String response;
       String operation;
-      String message; // request after clean up
+      String message; // request after formatting
 
       do {
         // read user input, write it into output stream then flush
@@ -62,11 +67,12 @@ public class TCPClient {
 
         message = request.trim().toLowerCase();
 
-        if (message.contains("put") || message.contains("PUT")) {
+        // if else check to get the type of operation
+        if (message.contains("put")) {
           operation = "PUT";
-        } else if (message.contains("get") || message.contains("GET")) {
+        } else if (message.contains("get")) {
           operation = "GET";
-        } else if (message.contains("delete") || message.contains("DELETE")) {
+        } else if (message.contains("delete")) {
           operation = "DELETE";
         } else {
           operation = "No valid operation";
@@ -75,9 +81,11 @@ public class TCPClient {
         // write request into client log
         ClientLogger.clientLoggingRequest(request, operation, port, hostname);
 
+        // write and flush
         writer.write(request);
         writer.newLine();
         writer.flush();
+
         // System.out.println("request: " + request);
 
         // create input stream and reader then retrieve response from server
@@ -93,14 +101,13 @@ public class TCPClient {
         System.out.println(response);
 
       } while (!request.equals("quit"));
-
-      // close up
+      // when user input quit, close up
       System.out.println("Closing connection");
       outputStream.close();
       writer.close();
-      //      reader.close();
 
-    } catch (SocketException socketException) { // socket and io exception handle
+      // socket, io exception and session out exception handle
+    } catch (SocketException socketException) {
       exception = socketException.toString();
       System.err.println("Socket exception: " + socketException.getMessage());
       socketException.printStackTrace();

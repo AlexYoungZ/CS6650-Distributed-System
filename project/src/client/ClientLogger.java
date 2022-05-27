@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-/** The type Client logger. */
+/** The Client logger for both TCP and UDP. */
 public class ClientLogger {
 
   /**
@@ -37,7 +37,7 @@ public class ClientLogger {
             + time
             + " client time";
 
-    FileWriter fw = new FileWriter("clientTCPLog.txt", true);
+    FileWriter fw = new FileWriter("clientLog.txt", true);
     BufferedWriter bw = new BufferedWriter(fw);
     bw.write(log);
     bw.newLine();
@@ -56,13 +56,12 @@ public class ClientLogger {
       throws IOException {
 
     String log;
-    //  "yyyy-MM-dd HH:mm:ss.SSSZ"
     String time =
         new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS")
             .format(new Date(System.currentTimeMillis()));
 
     log =
-        "Client receive: "
+        "Client receive server response: "
             + response
             + " from "
             + serverAddress
@@ -72,7 +71,7 @@ public class ClientLogger {
             + time
             + " client time";
 
-    FileWriter fw = new FileWriter("clientTCPLog.txt", true);
+    FileWriter fw = new FileWriter("clientLog.txt", true);
     BufferedWriter bw = new BufferedWriter(fw);
     bw.write(log);
     bw.newLine();
@@ -91,7 +90,6 @@ public class ClientLogger {
     String exception;
     String netExceptionPrefix = "java.net.";
     String ioExceptionPrefix = "java.io.";
-    //  "yyyy-MM-dd HH:mm:ss.SSSZ"
     String time =
         new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS")
             .format(new Date(System.currentTimeMillis()));
@@ -107,27 +105,28 @@ public class ClientLogger {
 
     log = "Client get: " + exception + " at " + time + " client time";
 
-    FileWriter fw = new FileWriter("clientTCPLog.txt", true);
+    FileWriter fw = new FileWriter("clientLog.txt", true);
     BufferedWriter bw = new BufferedWriter(fw);
     bw.write(log);
     bw.newLine();
     bw.close();
   }
 
+  /**
+   * Client logging exit.
+   *
+   * @throws IOException the io exception
+   */
   public static void clientLoggingExit() throws IOException {
 
     String log;
-    String exception;
-    String netExceptionPrefix = "java.net.";
-    String ioExceptionPrefix = "java.io.";
-    //  "yyyy-MM-dd HH:mm:ss.SSSZ"
     String time =
         new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS")
             .format(new Date(System.currentTimeMillis()));
 
     log = "Client quit at " + time + " client time";
 
-    FileWriter fw = new FileWriter("clientTCPLog.txt", true);
+    FileWriter fw = new FileWriter("clientLog.txt", true);
     BufferedWriter bw = new BufferedWriter(fw);
     bw.write(log);
     bw.newLine();

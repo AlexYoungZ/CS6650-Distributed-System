@@ -10,7 +10,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.HashMap;
 
-/** The type Server app. */
+/** The Server app. */
 public class TCPServer {
 
   /**
@@ -27,7 +27,7 @@ public class TCPServer {
     }
 
     // initialize hashmap
-    HashMap<String, String> map = new HashMap<String, String>();
+    HashMap<String, String> map = new HashMap<>();
     // initialize exception
     String exception;
 
@@ -61,56 +61,16 @@ public class TCPServer {
           // display request received at server side:
           System.out.println("Received request: " + request);
 
-          Integer len = request.length();
+          // initialize parameters
+          String operation; // operation after formatting
+          String response;
           message = request.trim().toLowerCase();
 
-          String key;
-          String value;
-          String operation;
-          String pair;
-          String response;
+          // get Operation type
+          operation = TCPHandler.getOperationType(request);
 
-          if (message.contains("put") || message.contains("PUT")) {
-            operation = "PUT";
-            pair = message.substring(message.indexOf("(") + 1, message.lastIndexOf(")"));
-            key = pair.split(",")[0].trim();
-            value = pair.split(",")[1].trim();
-
-            System.out.println("key: " + key);
-            System.out.println("value: " + value);
-            map.put(key, value);
-            response = "Put key: " + key + ", value: " + value + " pair in map";
-          } else if (message.contains("get") || message.contains("GET")) {
-            operation = "GET";
-
-            key = message.substring(message.indexOf("(") + 1, message.lastIndexOf(")"));
-            System.out.println("key: " + key);
-            if (map.containsKey(key)) {
-              value = map.get(key);
-              response = "Get value: " + value + " with given key: " + key;
-            } else {
-              response = "Didn't find matching value with given key: " + key;
-            }
-          } else if (message.contains("delete") || message.contains("DELETE")) {
-            operation = "DELETE";
-
-            key = message.substring(message.indexOf("(") + 1, message.lastIndexOf(")"));
-            System.out.println("key: " + key);
-            if (map.containsKey(key)) {
-              value = map.remove(key);
-              response = "Delete value: " + value + " with given key: " + key;
-            } else if (message.contains("quit")) {
-              response = "Client close connection";
-            } else {
-              response = "Didn't find matching value with given key: " + key;
-            }
-          } else {
-            response =
-                String.format(
-                    " Received malformed request of length %d from %s : %d",
-                    len, clientIpAddress, port);
-            operation = "No operation";
-          }
+          // call TCP handler to handle client request and return response
+          response = TCPHandler.handleUDPRequest(request, map, clientIpAddress, port);
 
           // display response at server side
           System.out.println("Server response: " + response);

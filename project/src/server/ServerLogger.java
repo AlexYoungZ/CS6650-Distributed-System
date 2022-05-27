@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-/** The type Server logger. */
+/** The Server logger. */
 public class ServerLogger {
 
   /**
@@ -22,7 +22,6 @@ public class ServerLogger {
       throws IOException {
 
     String log;
-    //  "yyyy-MM-dd HH:mm:ss.SSSZ"
     String time =
         new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS")
             .format(new Date(System.currentTimeMillis()));
@@ -41,13 +40,19 @@ public class ServerLogger {
             + " server time with server response: "
             + response;
 
-    FileWriter fw = new FileWriter("serverTCPLog.txt", true);
+    FileWriter fw = new FileWriter("serverLog.txt", true);
     BufferedWriter bw = new BufferedWriter(fw);
     bw.write(log);
     bw.newLine();
     bw.close();
   }
 
+  /**
+   * Server exception logging.
+   *
+   * @param exceptionMessage the exception message
+   * @throws IOException the io exception
+   */
   public static void serverExceptionLogging(String exceptionMessage) throws IOException {
 
     String log;
@@ -58,7 +63,7 @@ public class ServerLogger {
 
     log = "Server get: " + exceptionMessage + " at " + time + " server time";
 
-    FileWriter fw = new FileWriter("serverTCPLog.txt", true);
+    FileWriter fw = new FileWriter("serverLog.txt", true);
     BufferedWriter bw = new BufferedWriter(fw);
     bw.write(log);
     bw.newLine();
