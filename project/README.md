@@ -310,6 +310,53 @@ Enter text: delete(adfadaf)
 Server response: Delete value: 5 with given key: adfadaf
 Enter text: quit
 Client quit, closing UDP client
+MacBook-Pro-5:client siyangzhang$ java UDPClient localhost 3201
+Enter text: put()
+Server timed out: Receive timed out
+MacBook-Pro-5:client siyangzhang$ java UDPClient localhost 3201
+Enter text: put()
+^CMacBook-Pro-5:client siyangzhang$ java UDPClient localhost 3201
+Enter text: put()   
+Server timed out: Receive timed out
+MacBook-Pro-5:client siyangzhang$ java UDPClient localhost 3201
+Enter text: put(alex,1)
+Server response: Put key: alex, value: 1 pair in map
+Enter text: put(bill, 2)
+Server response: Put key: bill, value: 2 pair in map
+Enter text: PUT(Cindy, 3)
+Server response: Put key: cindy, value: 3 pair in map
+Enter text: PUT(Daniel, 4)
+Server response: Put key: daniel, value: 4 pair in map
+Enter text: put(elles,5)
+Server response: Put key: elles, value: 5 pair in map
+Enter text: get(alex    )
+Server response: Didn't find matching value with given key: alex    
+Enter text: get(alex)
+Server response: Get value: 1 with given key: alex
+Enter text: get(adfaaf)
+Server response: Didn't find matching value with given key: adfaaf
+Enter text: put(alex,3)
+Server response: Put key: alex, value: 3 pair in map
+Enter text: get(alex)
+Server response: Get value: 3 with given key: alex
+Enter text: put(adfadaf,5)
+Server response: Put key: adfadaf, value: 5 pair in map
+Enter text: delete(alex)
+Server response: Delete value: 3 with given key: alex
+Enter text: get(alex)
+Server response: Didn't find matching value with given key: alex
+Enter text: delete(adfafafaaaaa)
+Server response: Didn't find matching value with given key: adfafafaaaaa
+Enter text: delete(bill)
+Server response: Delete value: 2 with given key: bill
+Enter text: delete(Cindy)
+Server response: Delete value: 3 with given key: cindy
+Enter text: get(bill)
+Server response: Didn't find matching value with given key: bill
+Enter text: get(Cindy  )   
+Server response: Didn't find matching value with given key: cindy  
+Enter text: quit
+Client quit, closing UDP client
 MacBook-Pro-5:client siyangzhang$ 
 
 ```
@@ -317,36 +364,42 @@ UDP server console:
 ```
 MacBook-Pro-5:server siyangzhang$ java UDPServer 3201
 Server is listening on port: 3201
-Receive packet from /127.0.0.1 : 52744
+Receive packet from /127.0.0.1 : 63239
 Server response: Put key: alex, value: 1 pair in map
-Receive packet from /127.0.0.1 : 52744
+Receive packet from /127.0.0.1 : 63239
 Server response: Put key: bill, value: 2 pair in map
-Receive packet from /127.0.0.1 : 52744
+Receive packet from /127.0.0.1 : 63239
 Server response: Put key: cindy, value: 3 pair in map
-Receive packet from /127.0.0.1 : 52744
+Receive packet from /127.0.0.1 : 63239
 Server response: Put key: daniel, value: 4 pair in map
-Receive packet from /127.0.0.1 : 52744
+Receive packet from /127.0.0.1 : 63239
+Server response: Put key: elles, value: 5 pair in map
+Receive packet from /127.0.0.1 : 63239
 Server response: Didn't find matching value with given key: alex    
-Receive packet from /127.0.0.1 : 52744
+Receive packet from /127.0.0.1 : 63239
 Server response: Get value: 1 with given key: alex
-Receive packet from /127.0.0.1 : 52744
+Receive packet from /127.0.0.1 : 63239
 Server response: Didn't find matching value with given key: adfaaf
-Receive packet from /127.0.0.1 : 52744
+Receive packet from /127.0.0.1 : 63239
 Server response: Put key: alex, value: 3 pair in map
-Receive packet from /127.0.0.1 : 52744
+Receive packet from /127.0.0.1 : 63239
 Server response: Get value: 3 with given key: alex
-Receive packet from /127.0.0.1 : 52744
+Receive packet from /127.0.0.1 : 63239
 Server response: Put key: adfadaf, value: 5 pair in map
-Receive packet from /127.0.0.1 : 52744
+Receive packet from /127.0.0.1 : 63239
 Server response: Delete value: 3 with given key: alex
-Receive packet from /127.0.0.1 : 52744
+Receive packet from /127.0.0.1 : 63239
 Server response: Didn't find matching value with given key: alex
-Receive packet from /127.0.0.1 : 52744
-Server response: Delete value: 5 with given key: adfadaf
-Receive packet from /127.0.0.1 : 63762
-Server response: Didn't find matching value with given key: alex
-Receive packet from /127.0.0.1 : 63762
-Server response: Put key: alex, value: 1 pair in map
+Receive packet from /127.0.0.1 : 63239
+Server response: Didn't find matching value with given key: adfafafaaaaa
+Receive packet from /127.0.0.1 : 63239
+Server response: Delete value: 2 with given key: bill
+Receive packet from /127.0.0.1 : 63239
+Server response: Delete value: 3 with given key: cindy
+Receive packet from /127.0.0.1 : 63239
+Server response: Didn't find matching value with given key: bill
+Receive packet from /127.0.0.1 : 63239
+Server response: Didn't find matching value with given key: cindy  
 
 ```
 UDP Exception handling example:    
