@@ -48,7 +48,7 @@ public class TCPHandler {
     String response;
 
     if (message.contains("put")) {
-      pair = message.substring(message.indexOf("(") + 1, message.lastIndexOf(")"));
+      pair = message.substring(message.indexOf("(") + 1, message.lastIndexOf(")")).trim();
       key = pair.split(",")[0].trim();
       value = pair.split(",")[1].trim();
 

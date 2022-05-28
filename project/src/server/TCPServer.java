@@ -96,13 +96,13 @@ public class TCPServer {
       // IO exception handling and server log exception
       exception = ioException.toString();
       System.out.println("IO exception: " + ioException.getMessage());
-      ioException.printStackTrace();
+      //      ioException.printStackTrace();
       ServerLogger.serverExceptionLogging(exception);
     } catch (NullPointerException nullPointerException) {
       // null pointer exception handling and server log exception
       exception = nullPointerException.toString();
       System.out.println("Client input is invalid: " + nullPointerException.getMessage());
-      nullPointerException.printStackTrace();
+      //      nullPointerException.printStackTrace();
       ServerLogger.serverExceptionLogging(exception);
     }
   }

@@ -110,20 +110,20 @@ public class TCPClient {
     } catch (SocketException socketException) {
       exception = socketException.toString();
       System.err.println("Socket exception: " + socketException.getMessage());
-      socketException.printStackTrace();
+      //      socketException.printStackTrace();
       ClientLogger.clientLoggingException(exception);
 
     } catch (InterruptedIOException interruptedIOException) {
       exception = interruptedIOException.toString();
 
       System.err.println("Server timed out: " + interruptedIOException.getMessage());
-      interruptedIOException.printStackTrace();
+      //      interruptedIOException.printStackTrace();
       ClientLogger.clientLoggingException(exception);
 
     } catch (IOException ioException) {
       exception = ioException.toString();
       System.err.println("Network I/O exception: " + ioException.getMessage());
-      ioException.printStackTrace();
+      //      ioException.printStackTrace();
       ClientLogger.clientLoggingException(exception);
     }
   }
