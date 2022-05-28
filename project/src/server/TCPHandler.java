@@ -28,7 +28,7 @@ public class TCPHandler {
   }
 
   /**
-   * Handle udp client request and return server's response as string.
+   * Handle TCP client request and return server's response as string.
    *
    * @param request the client request
    * @param map the server hashmap
@@ -36,8 +36,9 @@ public class TCPHandler {
    * @param port the client port
    * @return the response string
    */
-  public static String handleUDPRequest(
-      String request, HashMap<String, String> map, String clientIpAddress, Integer port) {
+  public static String handleTCPRequest(
+      String request, HashMap<String, String> map, String clientIpAddress, Integer port)
+      throws ArrayIndexOutOfBoundsException {
 
     Integer len = request.length();
     String message = request.trim().toLowerCase();
@@ -49,6 +50,7 @@ public class TCPHandler {
 
     if (message.contains("put")) {
       pair = message.substring(message.indexOf("(") + 1, message.lastIndexOf(")")).trim();
+
       key = pair.split(",")[0].trim();
       value = pair.split(",")[1].trim();
 
@@ -83,7 +85,6 @@ public class TCPHandler {
           String.format(
               " Received malformed request of length %d from %s : %d", len, clientIpAddress, port);
     }
-
     return response;
   }
 }

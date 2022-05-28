@@ -70,7 +70,7 @@ public class TCPServer {
           operation = TCPHandler.getOperationType(request);
 
           // call TCP handler to handle client request and return response
-          response = TCPHandler.handleUDPRequest(request, map, clientIpAddress, port);
+          response = TCPHandler.handleTCPRequest(request, map, clientIpAddress, port);
 
           // display response at server side
           System.out.println("Server response: " + response);
@@ -98,7 +98,7 @@ public class TCPServer {
       System.out.println("IO exception: " + ioException.getMessage());
       //      ioException.printStackTrace();
       ServerLogger.serverExceptionLogging(exception);
-    } catch (NullPointerException nullPointerException) {
+    } catch (NullPointerException | IndexOutOfBoundsException nullPointerException) {
       // null pointer exception handling and server log exception
       exception = nullPointerException.toString();
       System.out.println("Client input is invalid: " + nullPointerException.getMessage());

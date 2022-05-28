@@ -1,17 +1,7 @@
-Server receive: put(alex, 1) from 127.0.0.1 at 3201 and perform PUT operation at 2022-05-27 17:41:52.400 server time with server response: Put key: alex, value: 1 pair in map
-Server receive: put(bill, 2) from 127.0.0.1 at 3201 and perform PUT operation at 2022-05-27 17:41:58.303 server time with server response: Put key: bill, value: 2 pair in map
-Server receive: PUT(Cindy, 3) from 127.0.0.1 at 3201 and perform PUT operation at 2022-05-27 17:42:06.820 server time with server response: Put key: cindy, value: 3 pair in map
-Server receive: PUT(Daniel, 4) from 127.0.0.1 at 3201 and perform PUT operation at 2022-05-27 17:42:22.874 server time with server response: Put key: daniel, value: 4 pair in map
-Server receive: get(alex    ) from 127.0.0.1 at 3201 and perform GET operation at 2022-05-27 17:46:28.505 server time with server response: Didn't find matching value with given key: alex    
-Server receive: get(alex) from 127.0.0.1 at 3201 and perform GET operation at 2022-05-27 17:46:40.812 server time with server response: Get value: 1 with given key: alex
-Server receive: get(adfaaf) from 127.0.0.1 at 3201 and perform GET operation at 2022-05-27 17:48:06.866 server time with server response: Didn't find matching value with given key: adfaaf
-Server receive: put(alex,3) from 127.0.0.1 at 3201 and perform PUT operation at 2022-05-27 17:48:19.636 server time with server response: Put key: alex, value: 3 pair in map
-Server receive: get(alex) from 127.0.0.1 at 3201 and perform GET operation at 2022-05-27 17:48:24.384 server time with server response: Get value: 3 with given key: alex
-Server receive: put(adfadaf,5) from 127.0.0.1 at 3201 and perform PUT operation at 2022-05-27 17:48:35.927 server time with server response: Put key: adfadaf, value: 5 pair in map
-Server receive: delete(alex) from 127.0.0.1 at 3201 and perform DELETE operation at 2022-05-27 17:48:46.415 server time with server response: Delete value: 3 with given key: alex
-Server receive: get(alex) from 127.0.0.1 at 3201 and perform GET operation at 2022-05-27 17:48:50.078 server time with server response: Didn't find matching value with given key: alex
-Server receive: delete(adfadaf) from 127.0.0.1 at 3201 and perform DELETE operation at 2022-05-27 17:48:55.513 server time with server response: Delete value: 5 with given key: adfadaf
-Server receive: delete(adfafafaaaaa) from 127.0.0.1 at 3201 and perform DELETE operation at 2022-05-27 17:49:07.696 server time with server response: Didn't find matching value with given key: adfafafaaaaa
-Server receive: quit from 127.0.0.1 at 3201 and perform No operation operation at 2022-05-27 17:54:15.154 server time with server response:  Received quit request from 127.0.0.1 : 3201
-Server receive: get(alex) from 1.0.0.0 at 3201 and perform GET operation at 2022-05-27 17:54:15.157 server time with server response: Didn't find matching value with given key: alex
-Server get: java.net.SocketException: Broken pipe at 2022-05-27 17:54:15.158 server time
+Server receive: put(alex, 123   ) from 127.0.0.1 at 3201 and perform PUT operation at 2022-05-27 21:42:35.027 server time with server response: Put key: alex, value: 123 pair in map
+Server receive: gadfalfdk from 127.0.0.1 at 3201 and perform No operation operation at 2022-05-27 21:42:41.812 server time with server response:  Received malformed request of length 9 from 127.0.0.1 : 3201
+Server receive: quit from 127.0.0.1 at 3201 and perform No operation operation at 2022-05-27 21:44:02.540 server time with server response:  Received quit request from 127.0.0.1 : 3201
+Server get: java.lang.ArrayIndexOutOfBoundsException: Index 1 out of bounds for length 1 at 2022-05-27 21:48:01.125 server time
+Server get: java.lang.ArrayIndexOutOfBoundsException: Index 1 out of bounds for length 1 at 2022-05-27 21:49:49.098 server time
+Server get: java.lang.ArrayIndexOutOfBoundsException: Index 1 out of bounds for length 1 at 2022-05-27 21:50:19.443 server time
+Server get: java.lang.ArrayIndexOutOfBoundsException: Index 1 out of bounds for length 1 at 2022-05-27 21:51:46.274 server time

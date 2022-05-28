@@ -83,7 +83,7 @@ Server response: Put key: cindy, value: 3 pair in map
 Received request: PUT(Daniel, 4)
 Server response: Put key: daniel, value: 4 pair in map
 ```    
-Five of each operation, including cases like put(update) new value with existing/none-existing key, get value with existing/none-existing key, delete key-value with existing/none-existing key.    
+<h4>Five of each operation, including cases like put(update) new value with existing/none-existing key, get value with existing/none-existing key, delete key-value with existing/none-existing key.</h4>    
 Client side console:    
 ```
 Enter text: get(alex    ) 
@@ -113,40 +113,127 @@ MacBook-Pro-5:client siyangzhang$
 ```
 Server side console:    
 ```
-
+MacBook-Pro-5:server siyangzhang$ java TCPServer 3201
+Server is listening on port: 3201
+Client's connection success!
+Received request: put(alex, 1)
+Server response: Put key: alex, value: 1 pair in map
+Received request: put(bill, 2)
+Server response: Put key: bill, value: 2 pair in map
+Received request: PUT(Cindy, 3)
+Server response: Put key: cindy, value: 3 pair in map
+Received request: PUT(Daniel, 4)
+Server response: Put key: daniel, value: 4 pair in map
+Received request: get(alex    )
+key: alex    
+Server response: Didn't find matching value with given key: alex    
+Received request: get(alex)
+key: alex
+Server response: Get value: 1 with given key: alex
+Received request: get(adfaaf)
+key: adfaaf
+Server response: Didn't find matching value with given key: adfaaf
+Received request: put(alex,3)
+Server response: Put key: alex, value: 3 pair in map
+Received request: get(alex)
+key: alex
+Server response: Get value: 3 with given key: alex
+Received request: put(adfadaf,5)
+Server response: Put key: adfadaf, value: 5 pair in map
+Received request: delete(alex)
+key: alex
+Server response: Delete value: 3 with given key: alex
+Received request: get(alex)
+key: alex
+Server response: Didn't find matching value with given key: alex
+Received request: delete(adfadaf)
+key: adfadaf
+Server response: Delete value: 5 with given key: adfadaf
+Received request: delete(adfafafaaaaa)
+key: adfafafaaaaa
+Server response: Didn't find matching value with given key: adfafafaaaaa
+Received request: quit
+Closing connection
+Server response:  Received quit request from 127.0.0.1 : 3201
+Closing connection
 ```
 
-Timeout Mechanism, set waiting time to 20s:
+<h4>Timeout Mechanism, set waiting time to 20s:</h4>
 ```
 MacBook-Pro-5:client siyangzhang$ java TCPClient localhost 3201
 Enter text: get(alex)
 Server timed out: Read timed out
 MacBook-Pro-5:client siyangzhang$ 
 ```
-<h4>Sample Input:<h4/>
+![time-out](res/time-out.png)    
+
+<h4>Invalid input example:</h4>    
+Client side console:
+```
+MacBook-Pro-5:client siyangzhang$ java TCPClient localhost 3201
+Enter text: put(alex, 123   )
+Server response: Put key: alex, value: 123 pair in map
+Enter text: gadfalfdk
+Server response:  Received malformed request of length 9 from 127.0.0.1 : 3201
+Enter text: 
+```
+Server side console:    
+```
+MacBook-Pro-5:server siyangzhang$ java TCPServer 3201
+Server is listening on port: 3201
+Client's connection success!
+Received request: put(alex, 123   )
+Server response: Put key: alex, value: 123 pair in map
+Received request: gadfalfdk
+Server response:  Received malformed request of length 9 from 127.0.0.1 : 3201
+```
+Exception handling example:    
+Client side console:
+```
+MacBook-Pro-5:client siyangzhang$ java TCPClient localhost 3201
+Enter text: put(adafda)
+Invalid response
+Closing connection
+MacBook-Pro-5:client siyangzhang$ 
+```
+Server side console:
+```
+MacBook-Pro-5:server siyangzhang$ java TCPServer 3201
+Server is listening on port: 3201
+Client's connection success!
+Received request: put(adafda)
+Client input is invalid: Index 1 out of bounds for length 1
+MacBook-Pro-5:server siyangzhang$ 
+```    
+client logging example:    
 ```
 
 ```
-
-<h4>Sample Output:<h4/>
+server logging example:
 ```
 
 ```
-<h4>Explanation:<h4/>  
+<h4>UDP follows the same logic, example list below:</h4>
+UDP client console:
+```
 
+```
+UDP server console:
+```
+
+```
+UDP client logging:
+```
+
+```
+UDP server logging:
+```
+
+```
 
 <h3>Assumption:  <h3/>
-
+No special assumption
 <h3>Limitation:  <h3/>  
-
+No special limitation
 <h3>Citation:   <h3/>
-
-
-I implement the communication protocol at server side since normally application won't limit what client request would be like(make it easy for client to use), instead let server decide if client request is valid or not.    
-
-Operations should be matched in this format:
-1) PUT (key, value) 
-2) GET (key)
-3) DELETE(key)
-
-TCP ServerLog example:
+Java Tutorial PDF from Canvas module 

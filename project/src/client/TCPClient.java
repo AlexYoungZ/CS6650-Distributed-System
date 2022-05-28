@@ -93,6 +93,17 @@ public class TCPClient {
         BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
 
         response = reader.readLine();
+        if (response == null) {
+          response = "Invalid response";
+
+          // write server response into client log
+          ClientLogger.clientLoggingResponse(response, operation, serverAddress);
+
+          // display server response at client side
+          System.out.println(response);
+
+          break;
+        }
 
         // write server response into client log
         ClientLogger.clientLoggingResponse(response, operation, serverAddress);
