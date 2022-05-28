@@ -58,7 +58,6 @@ public class UDPServer {
         String operation; // operation after formatting
         String response;
 
-
         // get Operation type
         operation = UDPHandler.getOperationType(request);
 
@@ -85,13 +84,13 @@ public class UDPServer {
       // IO exception handling and server log exception
       exception = ioException.toString();
       System.out.println("IO exception: " + ioException.getMessage());
-      ioException.printStackTrace();
+      //      ioException.printStackTrace();
       ServerLogger.serverExceptionLogging(exception);
-    } catch (NullPointerException nullPointerException) {
+    } catch (NullPointerException | IndexOutOfBoundsException nullPointerException) {
       // null pointer exception handling and server log exception
       exception = nullPointerException.toString();
       System.out.println("Client input is invalid: " + nullPointerException.getMessage());
-      nullPointerException.printStackTrace();
+      //      nullPointerException.printStackTrace();
       ServerLogger.serverExceptionLogging(exception);
     }
   }

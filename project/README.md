@@ -281,18 +281,151 @@ Server get: java.lang.ArrayIndexOutOfBoundsException: Index 1 out of bounds for 
 <h4>UDP follows the same logic, example list below:</h4>
 UDP client console:
 ```
+MacBook-Pro-5:client siyangzhang$ java UDPClient localhost 3201
+Enter text: put(alex, 1)
+Server response: Put key: alex, value: 1 pair in map
+Enter text: put(bill, 2)
+Server response: Put key: bill, value: 2 pair in map
+Enter text: PUT(Cindy, 3)
+Server response: Put key: cindy, value: 3 pair in map
+Enter text: PUT(Daniel, 4)
+Server response: Put key: daniel, value: 4 pair in map
+Enter text: get(alex    )  
+Server response: Didn't find matching value with given key: alex    
+Enter text: get(alex)
+Server response: Get value: 1 with given key: alex
+Enter text: get(adfaaf)
+Server response: Didn't find matching value with given key: adfaaf
+Enter text: put(alex,3)
+Server response: Put key: alex, value: 3 pair in map
+Enter text: get(alex)
+Server response: Get value: 3 with given key: alex
+Enter text: put(adfadaf,5)
+Server response: Put key: adfadaf, value: 5 pair in map
+Enter text: delete(alex)
+Server response: Delete value: 3 with given key: alex
+Enter text: get(alex)
+Server response: Didn't find matching value with given key: alex
+Enter text: delete(adfadaf)
+Server response: Delete value: 5 with given key: adfadaf
+Enter text: quit
+Client quit, closing UDP client
+MacBook-Pro-5:client siyangzhang$ 
 
 ```
 UDP server console:
 ```
+MacBook-Pro-5:server siyangzhang$ java UDPServer 3201
+Server is listening on port: 3201
+Receive packet from /127.0.0.1 : 52744
+Server response: Put key: alex, value: 1 pair in map
+Receive packet from /127.0.0.1 : 52744
+Server response: Put key: bill, value: 2 pair in map
+Receive packet from /127.0.0.1 : 52744
+Server response: Put key: cindy, value: 3 pair in map
+Receive packet from /127.0.0.1 : 52744
+Server response: Put key: daniel, value: 4 pair in map
+Receive packet from /127.0.0.1 : 52744
+Server response: Didn't find matching value with given key: alex    
+Receive packet from /127.0.0.1 : 52744
+Server response: Get value: 1 with given key: alex
+Receive packet from /127.0.0.1 : 52744
+Server response: Didn't find matching value with given key: adfaaf
+Receive packet from /127.0.0.1 : 52744
+Server response: Put key: alex, value: 3 pair in map
+Receive packet from /127.0.0.1 : 52744
+Server response: Get value: 3 with given key: alex
+Receive packet from /127.0.0.1 : 52744
+Server response: Put key: adfadaf, value: 5 pair in map
+Receive packet from /127.0.0.1 : 52744
+Server response: Delete value: 3 with given key: alex
+Receive packet from /127.0.0.1 : 52744
+Server response: Didn't find matching value with given key: alex
+Receive packet from /127.0.0.1 : 52744
+Server response: Delete value: 5 with given key: adfadaf
+Receive packet from /127.0.0.1 : 63762
+Server response: Didn't find matching value with given key: alex
+Receive packet from /127.0.0.1 : 63762
+Server response: Put key: alex, value: 1 pair in map
 
 ```
+UDP Exception handling example:    
+UDP Client side console:
+```
+MacBook-Pro-5:client siyangzhang$ java UDPClient localhost 3201
+Enter text: put()   
+Server timed out: Receive timed out
+MacBook-Pro-5:client siyangzhang$ 
+```
+UDP Server side console:
+```
+MacBook-Pro-5:server siyangzhang$ java UDPServer 3201
+Server is listening on port: 3201
+Receive packet from /127.0.0.1 : 50635
+Client input is invalid: Index 1 out of bounds for length 1
+MacBook-Pro-5:server siyangzhang$ 
+```    
+
+
 UDP client logging:
 ```
+Client send: put(alex, 1) from localhost at 3201 to perform PUT operation at 2022-05-27 22:31:29.343 client time
+Client receive server response: Put key: alex, value: 1 pair in map from localhost/127.0.0.1 with PUT operation at 2022-05-27 22:31:29.439 client time
+Client send: put(bill, 2) from localhost at 3201 to perform PUT operation at 2022-05-27 22:32:00.609 client time
+Client receive server response: Put key: bill, value: 2 pair in map from localhost/127.0.0.1 with PUT operation at 2022-05-27 22:32:00.610 client time
+Client send: PUT(Cindy, 3) from localhost at 3201 to perform PUT operation at 2022-05-27 22:32:05.108 client time
+Client receive server response: Put key: cindy, value: 3 pair in map from localhost/127.0.0.1 with PUT operation at 2022-05-27 22:32:05.109 client time
+Client send: PUT(Daniel, 4) from localhost at 3201 to perform PUT operation at 2022-05-27 22:32:10.084 client time
+Client receive server response: Put key: daniel, value: 4 pair in map from localhost/127.0.0.1 with PUT operation at 2022-05-27 22:32:10.086 client time
+Client send: get(alex    )  from localhost at 3201 to perform GET operation at 2022-05-27 22:32:30.309 client time
+Client receive server response: Didn't find matching value with given key: alex     from localhost/127.0.0.1 with GET operation at 2022-05-27 22:32:30.311 client time
+Client send: get(alex) from localhost at 3201 to perform GET operation at 2022-05-27 22:32:34.651 client time
+Client receive server response: Get value: 1 with given key: alex from localhost/127.0.0.1 with GET operation at 2022-05-27 22:32:34.653 client time
+Client send: get(adfaaf) from localhost at 3201 to perform GET operation at 2022-05-27 22:32:38.835 client time
+Client receive server response: Didn't find matching value with given key: adfaaf from localhost/127.0.0.1 with GET operation at 2022-05-27 22:32:38.837 client time
+Client send: put(alex,3) from localhost at 3201 to perform PUT operation at 2022-05-27 22:32:44.086 client time
+Client receive server response: Put key: alex, value: 3 pair in map from localhost/127.0.0.1 with PUT operation at 2022-05-27 22:32:44.087 client time
+Client send: get(alex) from localhost at 3201 to perform GET operation at 2022-05-27 22:32:48.712 client time
+Client receive server response: Get value: 3 with given key: alex from localhost/127.0.0.1 with GET operation at 2022-05-27 22:32:48.713 client time
+Client send: put(adfadaf,5) from localhost at 3201 to perform PUT operation at 2022-05-27 22:32:55.235 client time
+Client receive server response: Put key: adfadaf, value: 5 pair in map from localhost/127.0.0.1 with PUT operation at 2022-05-27 22:32:55.237 client time
+Client send: delete(alex) from localhost at 3201 to perform DELETE operation at 2022-05-27 22:33:00.399 client time
+Client receive server response: Delete value: 3 with given key: alex from localhost/127.0.0.1 with DELETE operation at 2022-05-27 22:33:00.401 client time
+Client send: get(alex) from localhost at 3201 to perform GET operation at 2022-05-27 22:33:04.326 client time
+Client receive server response: Didn't find matching value with given key: alex from localhost/127.0.0.1 with GET operation at 2022-05-27 22:33:04.327 client time
+Client send: delete(adfadaf) from localhost at 3201 to perform DELETE operation at 2022-05-27 22:33:09.590 client time
+Client receive server response: Delete value: 5 with given key: adfadaf from localhost/127.0.0.1 with DELETE operation at 2022-05-27 22:33:09.591 client time
+Client send: get(alex) from localhost at 3201 to perform GET operation at 2022-05-27 22:33:26.598 client time
+Client receive server response: Didn't find matching value with given key: alex from localhost/127.0.0.1 with GET operation at 2022-05-27 22:33:26.626 client time
+Client quit at 2022-05-27 22:33:50.091 client time
+Client send: put(alex,1) from localhost at 3201 to perform PUT operation at 2022-05-27 22:34:19.015 client time
+Client receive server response: Put key: alex, value: 1 pair in map from localhost/127.0.0.1 with PUT operation at 2022-05-27 22:34:19.016 client time
+Client quit at 2022-05-27 22:34:45.047 client time
+Client send: put() from localhost at 3201 to perform PUT operation at 2022-05-27 22:35:06.511 client time
+Client get: SocketTimeoutException: Receive timed out at 2022-05-27 22:35:26.538 client time
+Client send: put() from localhost at 3201 to perform PUT operation at 2022-05-27 22:36:06.241 client time
+Client send: put() from localhost at 3201 to perform PUT operation at 2022-05-27 22:36:21.694 client time
+Client get: SocketTimeoutException: Receive timed out at 2022-05-27 22:36:41.722 client time
 
 ```
 UDP server logging:
 ```
+Server receive: put(alex, 1) from /127.0.0.1 at 52744 and perform PUT operation at 2022-05-27 22:31:29.426 server time with server response: Put key: alex, value: 1 pair in map
+Server receive: put(bill, 2) from /127.0.0.1 at 52744 and perform PUT operation at 2022-05-27 22:32:00.610 server time with server response: Put key: bill, value: 2 pair in map
+Server receive: PUT(Cindy, 3) from /127.0.0.1 at 52744 and perform PUT operation at 2022-05-27 22:32:05.109 server time with server response: Put key: cindy, value: 3 pair in map
+Server receive: PUT(Daniel, 4) from /127.0.0.1 at 52744 and perform PUT operation at 2022-05-27 22:32:10.085 server time with server response: Put key: daniel, value: 4 pair in map
+Server receive: get(alex    )  from /127.0.0.1 at 52744 and perform GET operation at 2022-05-27 22:32:30.310 server time with server response: Didn't find matching value with given key: alex    
+Server receive: get(alex) from /127.0.0.1 at 52744 and perform GET operation at 2022-05-27 22:32:34.652 server time with server response: Get value: 1 with given key: alex
+Server receive: get(adfaaf) from /127.0.0.1 at 52744 and perform GET operation at 2022-05-27 22:32:38.836 server time with server response: Didn't find matching value with given key: adfaaf
+Server receive: put(alex,3) from /127.0.0.1 at 52744 and perform PUT operation at 2022-05-27 22:32:44.087 server time with server response: Put key: alex, value: 3 pair in map
+Server receive: get(alex) from /127.0.0.1 at 52744 and perform GET operation at 2022-05-27 22:32:48.712 server time with server response: Get value: 3 with given key: alex
+Server receive: put(adfadaf,5) from /127.0.0.1 at 52744 and perform PUT operation at 2022-05-27 22:32:55.236 server time with server response: Put key: adfadaf, value: 5 pair in map
+Server receive: delete(alex) from /127.0.0.1 at 52744 and perform DELETE operation at 2022-05-27 22:33:00.401 server time with server response: Delete value: 3 with given key: alex
+Server receive: get(alex) from /127.0.0.1 at 52744 and perform GET operation at 2022-05-27 22:33:04.327 server time with server response: Didn't find matching value with given key: alex
+Server receive: delete(adfadaf) from /127.0.0.1 at 52744 and perform DELETE operation at 2022-05-27 22:33:09.591 server time with server response: Delete value: 5 with given key: adfadaf
+Server receive: get(alex) from /127.0.0.1 at 63762 and perform GET operation at 2022-05-27 22:33:26.624 server time with server response: Didn't find matching value with given key: alex
+Server receive: put(alex,1) from /127.0.0.1 at 63762 and perform PUT operation at 2022-05-27 22:34:19.016 server time with server response: Put key: alex, value: 1 pair in map
+Server get: java.lang.ArrayIndexOutOfBoundsException: Index 1 out of bounds for length 1 at 2022-05-27 22:36:21.780 server time
 
 ```
 
