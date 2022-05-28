@@ -205,12 +205,77 @@ Received request: put(adafda)
 Client input is invalid: Index 1 out of bounds for length 1
 MacBook-Pro-5:server siyangzhang$ 
 ```    
-client logging example:    
+<h4>client logging example:</h4> 
+client log has two types, send and receive    
+Send Format:    
+Client send: `<client input>` from `<hostname>` at `<port>` to perform `<operation type>` operation at `<client time>` client time    
+Receive Format:    
+Client receive server response: `<server response>` from `<server address>` with `<operation type>` operation at `<client time>` client time
 ```
+Client send: put(alex,1) from localhost at 3201 to perform PUT operation at 2022-05-27 22:10:18.992 client time
+Client receive server response: Server response: Put key: alex, value: 1 pair in map from 127.0.0.1 with PUT operation at 2022-05-27 22:10:19.079 client time
+Client send: put(bill, 2) from localhost at 3201 to perform PUT operation at 2022-05-27 22:10:24.146 client time
+Client receive server response: Server response: Put key: bill, value: 2 pair in map from 127.0.0.1 with PUT operation at 2022-05-27 22:10:24.147 client time
+Client send: PUT(Cindy, 3) from localhost at 3201 to perform PUT operation at 2022-05-27 22:10:28.970 client time
+Client receive server response: Server response: Put key: cindy, value: 3 pair in map from 127.0.0.1 with PUT operation at 2022-05-27 22:10:28.971 client time
+Client send: PUT(Daniel, 4) from localhost at 3201 to perform PUT operation at 2022-05-27 22:10:33.838 client time
+Client receive server response: Server response: Put key: daniel, value: 4 pair in map from 127.0.0.1 with PUT operation at 2022-05-27 22:10:33.840 client time
+Client send: get(alex    )  from localhost at 3201 to perform GET operation at 2022-05-27 22:10:41.322 client time
+Client receive server response: Server response: Didn't find matching value with given key: alex     from 127.0.0.1 with GET operation at 2022-05-27 22:10:41.324 client time
+Client send: get(alex) from localhost at 3201 to perform GET operation at 2022-05-27 22:10:45.417 client time
+Client receive server response: Server response: Get value: 1 with given key: alex from 127.0.0.1 with GET operation at 2022-05-27 22:10:45.419 client time
+Client send: get(adfaaf) from localhost at 3201 to perform GET operation at 2022-05-27 22:10:49.973 client time
+Client receive server response: Server response: Didn't find matching value with given key: adfaaf from 127.0.0.1 with GET operation at 2022-05-27 22:10:49.975 client time
+Client send: put(alex,3) from localhost at 3201 to perform PUT operation at 2022-05-27 22:10:53.484 client time
+Client receive server response: Server response: Put key: alex, value: 3 pair in map from 127.0.0.1 with PUT operation at 2022-05-27 22:10:53.485 client time
+Client send: get(alex) from localhost at 3201 to perform GET operation at 2022-05-27 22:10:57.410 client time
+Client receive server response: Server response: Get value: 3 with given key: alex from 127.0.0.1 with GET operation at 2022-05-27 22:10:57.411 client time
+Client send: put(adfadaf,5) from localhost at 3201 to perform PUT operation at 2022-05-27 22:11:01.224 client time
+Client receive server response: Server response: Put key: adfadaf, value: 5 pair in map from 127.0.0.1 with PUT operation at 2022-05-27 22:11:01.226 client time
+Client send: delete(alex) from localhost at 3201 to perform DELETE operation at 2022-05-27 22:11:04.880 client time
+Client receive server response: Server response: Delete value: 3 with given key: alex from 127.0.0.1 with DELETE operation at 2022-05-27 22:11:04.882 client time
+Client send: get(alex) from localhost at 3201 to perform GET operation at 2022-05-27 22:11:10.842 client time
+Client receive server response: Server response: Didn't find matching value with given key: alex from 127.0.0.1 with GET operation at 2022-05-27 22:11:10.843 client time
+Client send: delete(adfafafaaaaa) from localhost at 3201 to perform DELETE operation at 2022-05-27 22:11:17.908 client time
+Client receive server response: Server response: Didn't find matching value with given key: adfafafaaaaa from 127.0.0.1 with DELETE operation at 2022-05-27 22:11:17.909 client time
+Client send: get(alex) from localhost at 3201 to perform GET operation at 2022-05-27 22:11:42.014 client time
+Client send: adfafafafdafd from localhost at 3201 to perform No valid operation operation at 2022-05-27 22:11:51.546 client time
+Client receive server response: Server response:  Received malformed request of length 13 from 127.0.0.1 : 3201 from 127.0.0.1 with No valid operation operation at 2022-05-27 22:11:51.550 client time
+Client send: quit from localhost at 3201 to perform No valid operation operation at 2022-05-27 22:12:01.727 client time
+Client receive server response: Server response:  Received quit request from 127.0.0.1 : 3201 from 127.0.0.1 with No valid operation operation at 2022-05-27 22:12:01.729 client time
+Client receive server response: Server response: Didn't find matching value with given key: alex from 127.0.0.1 with GET operation at 2022-05-27 22:12:01.731 client time
+Client send: get(alex) from localhost at 3201 to perform GET operation at 2022-05-27 22:12:23.957 client time
+Client receive server response: Server response: Didn't find matching value with given key: alex from 127.0.0.1 with GET operation at 2022-05-27 22:12:23.959 client time
+Client send: put(alex) from localhost at 3201 to perform PUT operation at 2022-05-27 22:12:40.394 client time
+Client receive server response: Invalid response from 127.0.0.1 with PUT operation at 2022-05-27 22:12:40.403 client time
 
 ```
-server logging example:
+<h4>server logging example:</h4>
+Server receive log format:
+
+Server receive: `<client request>` from `<client address>` at `port` and perform `<operation type>` operation at `<server time>` with server response `<server response>`
+
+Server exception log format:    
+Server get: `<exception>` at `<server time>` server time
 ```
+Server receive: put(alex,1) from 127.0.0.1 at 3201 and perform PUT operation at 2022-05-27 22:10:19.065 server time with server response: Put key: alex, value: 1 pair in map
+Server receive: put(bill, 2) from 127.0.0.1 at 3201 and perform PUT operation at 2022-05-27 22:10:24.147 server time with server response: Put key: bill, value: 2 pair in map
+Server receive: PUT(Cindy, 3) from 127.0.0.1 at 3201 and perform PUT operation at 2022-05-27 22:10:28.971 server time with server response: Put key: cindy, value: 3 pair in map
+Server receive: PUT(Daniel, 4) from 127.0.0.1 at 3201 and perform PUT operation at 2022-05-27 22:10:33.839 server time with server response: Put key: daniel, value: 4 pair in map
+Server receive: get(alex    )  from 127.0.0.1 at 3201 and perform GET operation at 2022-05-27 22:10:41.323 server time with server response: Didn't find matching value with given key: alex    
+Server receive: get(alex) from 127.0.0.1 at 3201 and perform GET operation at 2022-05-27 22:10:45.419 server time with server response: Get value: 1 with given key: alex
+Server receive: get(adfaaf) from 127.0.0.1 at 3201 and perform GET operation at 2022-05-27 22:10:49.974 server time with server response: Didn't find matching value with given key: adfaaf
+Server receive: put(alex,3) from 127.0.0.1 at 3201 and perform PUT operation at 2022-05-27 22:10:53.484 server time with server response: Put key: alex, value: 3 pair in map
+Server receive: get(alex) from 127.0.0.1 at 3201 and perform GET operation at 2022-05-27 22:10:57.410 server time with server response: Get value: 3 with given key: alex
+Server receive: put(adfadaf,5) from 127.0.0.1 at 3201 and perform PUT operation at 2022-05-27 22:11:01.225 server time with server response: Put key: adfadaf, value: 5 pair in map
+Server receive: delete(alex) from 127.0.0.1 at 3201 and perform DELETE operation at 2022-05-27 22:11:04.881 server time with server response: Delete value: 3 with given key: alex
+Server receive: get(alex) from 127.0.0.1 at 3201 and perform GET operation at 2022-05-27 22:11:10.843 server time with server response: Didn't find matching value with given key: alex
+Server receive: delete(adfafafaaaaa) from 127.0.0.1 at 3201 and perform DELETE operation at 2022-05-27 22:11:17.909 server time with server response: Didn't find matching value with given key: adfafafaaaaa
+Server receive: adfafafafdafd from 127.0.0.1 at 3201 and perform No operation operation at 2022-05-27 22:11:51.549 server time with server response:  Received malformed request of length 13 from 127.0.0.1 : 3201
+Server receive: quit from 127.0.0.1 at 3201 and perform No operation operation at 2022-05-27 22:12:01.728 server time with server response:  Received quit request from 127.0.0.1 : 3201
+Server receive: get(alex) from 127.0.0.1 at 3201 and perform GET operation at 2022-05-27 22:12:01.730 server time with server response: Didn't find matching value with given key: alex
+Server receive: get(alex) from 127.0.0.1 at 3201 and perform GET operation at 2022-05-27 22:12:23.958 server time with server response: Didn't find matching value with given key: alex
+Server get: java.lang.ArrayIndexOutOfBoundsException: Index 1 out of bounds for length 1 at 2022-05-27 22:12:40.395 server time
 
 ```
 <h4>UDP follows the same logic, example list below:</h4>

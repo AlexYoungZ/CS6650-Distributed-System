@@ -1,7 +1,0 @@
-Server receive: put(alex, 123   ) from 127.0.0.1 at 3201 and perform PUT operation at 2022-05-27 21:42:35.027 server time with server response: Put key: alex, value: 123 pair in map
-Server receive: gadfalfdk from 127.0.0.1 at 3201 and perform No operation operation at 2022-05-27 21:42:41.812 server time with server response:  Received malformed request of length 9 from 127.0.0.1 : 3201
-Server receive: quit from 127.0.0.1 at 3201 and perform No operation operation at 2022-05-27 21:44:02.540 server time with server response:  Received quit request from 127.0.0.1 : 3201
-Server get: java.lang.ArrayIndexOutOfBoundsException: Index 1 out of bounds for length 1 at 2022-05-27 21:48:01.125 server time
-Server get: java.lang.ArrayIndexOutOfBoundsException: Index 1 out of bounds for length 1 at 2022-05-27 21:49:49.098 server time
-Server get: java.lang.ArrayIndexOutOfBoundsException: Index 1 out of bounds for length 1 at 2022-05-27 21:50:19.443 server time
-Server get: java.lang.ArrayIndexOutOfBoundsException: Index 1 out of bounds for length 1 at 2022-05-27 21:51:46.274 server time
