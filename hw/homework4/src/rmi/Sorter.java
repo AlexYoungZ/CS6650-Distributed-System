@@ -1,8 +1,7 @@
-
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 
-/** The Sorter interface. */
+/** The remote Sorter interface. */
 public interface Sorter extends Remote {
   /**
    * Sort array of integers.

@@ -1,4 +1,3 @@
-
 import java.rmi.Naming;
 import java.rmi.RemoteException;
 import java.net.MalformedURLException;
@@ -14,8 +13,11 @@ public class SorterClient {
    */
   public static void main(String[] args) {
     try {
-      Sorter sorter = (Sorter) Naming.lookup("rmi://localhost/SorterService");
-      Integer[] intArray = {1, 5, 4, 3, 12, 22, 1};
+      // get the remote sorter object by lookup in remove object registry with name of SorterService
+      // at localhost:3000
+      Sorter sorter = (Sorter) Naming.lookup("rmi://localhost:3000/SorterService");
+
+      Integer[] intArray = {1, 5, 4, 3, 12, 22, 1, 2, 6, 222};
       System.out.println(Arrays.toString(sorter.sortArray(intArray)));
 
     } catch (MalformedURLException | RemoteException | NotBoundException exception) {
