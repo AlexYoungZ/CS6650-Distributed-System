@@ -11,6 +11,8 @@
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/client" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/server" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/RPC" isTestSource="false" />
+      <excludeFolder url="file://$MODULE_DIR$/src/helper" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

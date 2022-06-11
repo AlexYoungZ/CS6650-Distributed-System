@@ -13,12 +13,11 @@ public class ServerLogger {
    * @param request the request
    * @param response the response
    * @param operation the operation
-   * @param port the port
    * @param clientAddress the client address
    * @throws IOException the io exception
    */
   public static void serverLogging(
-      String request, String response, String operation, Integer port, String clientAddress)
+      String request, String response, String operation, String clientAddress)
       throws IOException {
 
     String log;
@@ -31,8 +30,6 @@ public class ServerLogger {
             + request
             + " from "
             + clientAddress
-            + " at "
-            + port
             + " and perform "
             + operation
             + " operation at "

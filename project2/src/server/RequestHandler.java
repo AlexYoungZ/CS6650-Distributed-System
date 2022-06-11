@@ -1,5 +1,5 @@
-import java.util.HashMap;
 import java.util.Objects;
+import java.util.concurrent.ConcurrentHashMap;
 
 /** client request handler. */
 public class RequestHandler {
@@ -32,12 +32,11 @@ public class RequestHandler {
    *
    * @param request the client request
    * @param map the server hashmap
-   * @param clientIpAddress the client address
-   * @param port the client port
+   * @param clientHost the client address
    * @return the response string
    */
-  public static String handleTCPRequest(
-      String request, HashMap<String, String> map, String clientIpAddress, Integer port)
+  public static String handleRequest(
+      String request, ConcurrentHashMap<String, String> map, String clientHost)
       throws ArrayIndexOutOfBoundsException {
 
     Integer len = request.length();
@@ -79,11 +78,11 @@ public class RequestHandler {
     } else if (Objects.equals(message, "quit")) {
       // close connection
       System.out.println("Closing connection");
-      response = String.format(" Received quit request from %s : %d", clientIpAddress, port);
+      response = String.format(" Received quit request from %s", clientHost);
     } else {
       response =
           String.format(
-              " Received malformed request of length %d from %s : %d", len, clientIpAddress, port);
+              " Received malformed request of length %d from %s", len, clientHost);
     }
     return response;
   }
