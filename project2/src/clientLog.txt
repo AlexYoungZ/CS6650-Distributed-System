@@ -1,0 +1,57 @@
+Client send: put(alex,123) from MacBook-Pro-5.local at 192.168.1.66 to perform PUT operation at 2022-06-10 22:28:35.613 client time
+Client receive server response: Put key: alex, value: 123 pair in map from localhost with PUT operation at 2022-06-10 22:28:35.627 client time
+Client send: put(alexy, 111) from MacBook-Pro-5.local at 192.168.1.66 to perform PUT operation at 2022-06-10 22:28:43.629 client time
+Client receive server response: Put key: alexy, value: 111 pair in map from localhost with PUT operation at 2022-06-10 22:28:43.629 client time
+Client send: put(bill, 000) from MacBook-Pro-5.local at 192.168.1.66 to perform PUT operation at 2022-06-10 22:28:51.781 client time
+Client receive server response: Put key: bill, value: 000 pair in map from localhost with PUT operation at 2022-06-10 22:28:51.782 client time
+Client send: put(cindy, 222) from MacBook-Pro-5.local at 192.168.1.66 to perform PUT operation at 2022-06-10 22:29:10.370 client time
+Client receive server response: Put key: cindy, value: 222 pair in map from localhost with PUT operation at 2022-06-10 22:29:10.383 client time
+Client send: put(wang, 333) from MacBook-Pro-5.local at 192.168.1.66 to perform PUT operation at 2022-06-10 22:29:17.488 client time
+Client receive server response: Put key: wang, value: 333 pair in map from localhost with PUT operation at 2022-06-10 22:29:17.488 client time
+Client send: put(bill,88) from MacBook-Pro-5.local at 192.168.1.66 to perform PUT operation at 2022-06-10 22:31:14.594 client time
+Client receive server response: Put key: bill, value: 88 pair in map from localhost with PUT operation at 2022-06-10 22:31:14.595 client time
+Client send: put(alex,11) from MacBook-Pro-5.local at 192.168.1.66 to perform PUT operation at 2022-06-10 22:31:20.714 client time
+Client receive server response: Put key: alex, value: 11 pair in map from localhost with PUT operation at 2022-06-10 22:31:20.714 client time
+Client send: get(alex) from MacBook-Pro-5.local at 192.168.1.66 to perform GET operation at 2022-06-10 22:31:39.998 client time
+Client receive server response: Get value: 11 with given key: alex from localhost with GET operation at 2022-06-10 22:31:39.999 client time
+Client send: get(bill) from MacBook-Pro-5.local at 192.168.1.66 to perform GET operation at 2022-06-10 22:31:46.411 client time
+Client receive server response: Get value: 88 with given key: bill from localhost with GET operation at 2022-06-10 22:31:46.412 client time
+Client send: get(cindy) from MacBook-Pro-5.local at 192.168.1.66 to perform GET operation at 2022-06-10 22:31:52.947 client time
+Client receive server response: Get value: 222 with given key: cindy from localhost with GET operation at 2022-06-10 22:31:52.948 client time
+Client send: delete(alex) from MacBook-Pro-5.local at 192.168.1.66 to perform DELETE operation at 2022-06-10 22:32:01.139 client time
+Client receive server response: Delete value: 11 with given key: alex from localhost with DELETE operation at 2022-06-10 22:32:01.139 client time
+Client send: get(alex) from MacBook-Pro-5.local at 192.168.1.66 to perform GET operation at 2022-06-10 22:32:06.340 client time
+Client receive server response: Didn't find matching value with given key: alex from localhost with GET operation at 2022-06-10 22:32:06.341 client time
+Client send: get(cindy) from MacBook-Pro-5.local at 192.168.1.66 to perform GET operation at 2022-06-10 22:32:20.939 client time
+Client receive server response: Get value: 222 with given key: cindy from localhost with GET operation at 2022-06-10 22:32:20.939 client time
+Client send: put(alex,0) from MacBook-Pro-5.local at 192.168.1.66 to perform PUT operation at 2022-06-10 22:32:30.299 client time
+Client receive server response: Put key: alex, value: 0 pair in map from localhost with PUT operation at 2022-06-10 22:32:30.300 client time
+Client send: get(alex) from MacBook-Pro-5.local at 192.168.1.66 to perform GET operation at 2022-06-10 22:32:34.789 client time
+Client receive server response: Get value: 0 with given key: alex from localhost with GET operation at 2022-06-10 22:32:34.789 client time
+Client send: put(Dendi,8) from MacBook-Pro-5.local at 192.168.1.66 to perform PUT operation at 2022-06-10 22:32:56.536 client time
+Client receive server response: Put key: dendi, value: 8 pair in map from localhost with PUT operation at 2022-06-10 22:32:56.537 client time
+Client send: put(Eric, 99) from MacBook-Pro-5.local at 192.168.1.66 to perform PUT operation at 2022-06-10 22:33:03.027 client time
+Client receive server response: Put key: eric, value: 99 pair in map from localhost with PUT operation at 2022-06-10 22:33:03.027 client time
+Client send: delete(dendi) from MacBook-Pro-5.local at 192.168.1.66 to perform DELETE operation at 2022-06-10 22:33:11.702 client time
+Client receive server response: Delete value: 8 with given key: dendi from localhost with DELETE operation at 2022-06-10 22:33:11.702 client time
+Client send: delete(eric) from MacBook-Pro-5.local at 192.168.1.66 to perform DELETE operation at 2022-06-10 22:33:18.315 client time
+Client receive server response: Delete value: 99 with given key: eric from localhost with DELETE operation at 2022-06-10 22:33:18.316 client time
+Client send: delete(alex) from MacBook-Pro-5.local at 192.168.1.66 to perform DELETE operation at 2022-06-10 22:33:25.437 client time
+Client receive server response: Delete value: 0 with given key: alex from localhost with DELETE operation at 2022-06-10 22:33:25.437 client time
+Client send: delete(alex) from MacBook-Pro-5.local at 192.168.1.66 to perform DELETE operation at 2022-06-10 22:33:29.073 client time
+Client receive server response: Didn't find matching value with given key: alex from localhost with DELETE operation at 2022-06-10 22:33:29.073 client time
+Client send: delete(alex) from MacBook-Pro-5.local at 192.168.1.66 to perform DELETE operation at 2022-06-10 22:33:34.618 client time
+Client receive server response: Didn't find matching value with given key: alex from localhost with DELETE operation at 2022-06-10 22:33:34.619 client time
+Client send: delete(cindy) from MacBook-Pro-5.local at 192.168.1.66 to perform DELETE operation at 2022-06-10 22:33:41.727 client time
+Client receive server response: Delete value: 222 with given key: cindy from localhost with DELETE operation at 2022-06-10 22:33:41.728 client time
+Client send: quit from MacBook-Pro-5.local at 192.168.1.66 to perform No valid operation operation at 2022-06-10 22:33:48.727 client time
+Client receive server response:  Received quit request from 192.168.1.66 from localhost with No valid operation operation at 2022-06-10 22:33:48.727 client time
+Client quit at 2022-06-10 22:33:48.728 client time
+Client send: quit from MacBook-Pro-5.local at 192.168.1.66 to perform No valid operation operation at 2022-06-10 22:33:53.845 client time
+Client receive server response:  Received quit request from 192.168.1.66 from localhost with No valid operation operation at 2022-06-10 22:33:53.845 client time
+Client quit at 2022-06-10 22:33:53.845 client time
+Client send: get(eric) from MacBook-Pro-5.local at 127.0.0.1 to perform GET operation at 2022-06-10 22:37:17.458 client time
+Client receive server response: Didn't find matching value with given key: eric from localhost with GET operation at 2022-06-10 22:37:17.470 client time
+Client get: java.lang.ArrayIndexOutOfBoundsException: Index 1 out of bounds for length 1 at 2022-06-10 22:40:08.322 client time
+Client send: adfafdfafd from MacBook-Pro-5.local at 127.0.0.1 to perform No valid operation operation at 2022-06-10 22:40:38.595 client time
+Client receive server response:  Received malformed request of length 10 from 192.168.1.66 from localhost with No valid operation operation at 2022-06-10 22:40:38.606 client time

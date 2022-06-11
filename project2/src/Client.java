@@ -108,6 +108,10 @@ public class Client {
     } catch (NotBoundException | IOException exception) {
       System.out.println(exception + exception.getMessage());
       ClientLogger.clientLoggingException(exception.toString());
+    } catch (ArrayIndexOutOfBoundsException arrayIndexOutOfBoundsException) {
+      System.out.println(
+          "ArrayIndexOutOfBoundsException: " + arrayIndexOutOfBoundsException.getMessage());
+      ClientLogger.clientLoggingException(arrayIndexOutOfBoundsException.toString());
     }
   }
 }

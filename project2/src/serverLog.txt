@@ -1,0 +1,27 @@
+Server receive: put(alex,123) from 192.168.1.66 and perform PUT operation at 2022-06-10 22:28:35.551 server time with server response: Put key: alex, value: 123 pair in map
+Server receive: put(alexy, 111) from 192.168.1.66 and perform PUT operation at 2022-06-10 22:28:43.628 server time with server response: Put key: alexy, value: 111 pair in map
+Server receive: put(bill, 000) from 192.168.1.66 and perform PUT operation at 2022-06-10 22:28:51.781 server time with server response: Put key: bill, value: 000 pair in map
+Server receive: put(cindy, 222) from 192.168.1.66 and perform PUT operation at 2022-06-10 22:29:10.347 server time with server response: Put key: cindy, value: 222 pair in map
+Server receive: put(wang, 333) from 192.168.1.66 and perform PUT operation at 2022-06-10 22:29:17.487 server time with server response: Put key: wang, value: 333 pair in map
+Server receive: put(bill,88) from 192.168.1.66 and perform PUT operation at 2022-06-10 22:31:14.594 server time with server response: Put key: bill, value: 88 pair in map
+Server receive: put(alex,11) from 192.168.1.66 and perform PUT operation at 2022-06-10 22:31:20.713 server time with server response: Put key: alex, value: 11 pair in map
+Server receive: get(alex) from 192.168.1.66 and perform GET operation at 2022-06-10 22:31:39.998 server time with server response: Get value: 11 with given key: alex
+Server receive: get(bill) from 192.168.1.66 and perform GET operation at 2022-06-10 22:31:46.411 server time with server response: Get value: 88 with given key: bill
+Server receive: get(cindy) from 192.168.1.66 and perform GET operation at 2022-06-10 22:31:52.947 server time with server response: Get value: 222 with given key: cindy
+Server receive: delete(alex) from 192.168.1.66 and perform DELETE operation at 2022-06-10 22:32:01.138 server time with server response: Delete value: 11 with given key: alex
+Server receive: get(alex) from 192.168.1.66 and perform GET operation at 2022-06-10 22:32:06.339 server time with server response: Didn't find matching value with given key: alex
+Server receive: get(cindy) from 192.168.1.66 and perform GET operation at 2022-06-10 22:32:20.938 server time with server response: Get value: 222 with given key: cindy
+Server receive: put(alex,0) from 192.168.1.66 and perform PUT operation at 2022-06-10 22:32:30.299 server time with server response: Put key: alex, value: 0 pair in map
+Server receive: get(alex) from 192.168.1.66 and perform GET operation at 2022-06-10 22:32:34.788 server time with server response: Get value: 0 with given key: alex
+Server receive: put(Dendi,8) from 192.168.1.66 and perform PUT operation at 2022-06-10 22:32:56.536 server time with server response: Put key: dendi, value: 8 pair in map
+Server receive: put(Eric, 99) from 192.168.1.66 and perform PUT operation at 2022-06-10 22:33:03.026 server time with server response: Put key: eric, value: 99 pair in map
+Server receive: delete(dendi) from 192.168.1.66 and perform DELETE operation at 2022-06-10 22:33:11.702 server time with server response: Delete value: 8 with given key: dendi
+Server receive: delete(eric) from 192.168.1.66 and perform DELETE operation at 2022-06-10 22:33:18.315 server time with server response: Delete value: 99 with given key: eric
+Server receive: delete(alex) from 192.168.1.66 and perform DELETE operation at 2022-06-10 22:33:25.436 server time with server response: Delete value: 0 with given key: alex
+Server receive: delete(alex) from 192.168.1.66 and perform DELETE operation at 2022-06-10 22:33:29.072 server time with server response: Didn't find matching value with given key: alex
+Server receive: delete(alex) from 192.168.1.66 and perform DELETE operation at 2022-06-10 22:33:34.618 server time with server response: Didn't find matching value with given key: alex
+Server receive: delete(cindy) from 192.168.1.66 and perform DELETE operation at 2022-06-10 22:33:41.727 server time with server response: Delete value: 222 with given key: cindy
+Server receive: quit from 192.168.1.66 and perform No operation operation at 2022-06-10 22:33:48.727 server time with server response:  Received quit request from 192.168.1.66
+Server receive: quit from 192.168.1.66 and perform No operation operation at 2022-06-10 22:33:53.844 server time with server response:  Received quit request from 192.168.1.66
+Server receive: get(eric) from 192.168.1.66 and perform GET operation at 2022-06-10 22:37:17.434 server time with server response: Didn't find matching value with given key: eric
+Server receive: adfafdfafd from 192.168.1.66 and perform No operation operation at 2022-06-10 22:40:38.559 server time with server response:  Received malformed request of length 10 from 192.168.1.66
