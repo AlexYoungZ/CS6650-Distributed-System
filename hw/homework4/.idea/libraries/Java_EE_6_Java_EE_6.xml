@@ -10,8 +10,14 @@
       <root url="jar://$PROJECT_DIR$/lib/javax.resource.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/javax.servlet.jsp.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/javax.persistence.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/activemq-all-5.17.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/slf4j-jdk14-1.7.36.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/activemq.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
+    <excluded>
+      <root url="jar://$PROJECT_DIR$/lib/slf4j-jdk14-1.7.36.jar!/" />
+    </excluded>
   </library>
 </component>

@@ -26,19 +26,18 @@ public class TCPClient {
       System.out.println("Example: java Client localhost 3200");
       System.exit(1);
     }
-
-    String hostname = args[0];
-    // System.out.println("hostname is: "+hostname);
-
-    // initialize ClientLogger
-    ClientLogger clientLogger;
     // initialize exception message string
     String exception;
 
-    int port = Integer.parseInt(args[1]);
+    try {
 
-    // create socket with given hostname and port number
-    try (Socket socket = new Socket(hostname, port)) {
+      String hostname = args[0];
+      // System.out.println("hostname is: "+hostname);
+
+      int port = Integer.parseInt(args[1]);
+      // create socket with given hostname and port number
+
+      Socket socket = new Socket(hostname, port);
       // create console to interact
       Console console = System.console();
 
@@ -135,6 +134,11 @@ public class TCPClient {
       exception = ioException.toString();
       System.err.println("Network I/O exception: " + ioException.getMessage());
       //      ioException.printStackTrace();
+      ClientLogger.clientLoggingException(exception);
+    } catch (NumberFormatException numberFormatException) {
+      exception = numberFormatException.toString();
+      System.out.println("Number format exception: " + numberFormatException.getMessage());
+      //      numberFormatException.printStackTrace();
       ClientLogger.clientLoggingException(exception);
     }
   }

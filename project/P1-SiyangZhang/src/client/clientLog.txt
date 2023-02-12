@@ -1,0 +1,78 @@
+Client send: put(alex, 1) from localhost at 3201 to perform PUT operation at 2022-05-27 22:31:29.343 client time
+Client receive server response: Put key: alex, value: 1 pair in map from localhost/127.0.0.1 with PUT operation at 2022-05-27 22:31:29.439 client time
+Client send: put(bill, 2) from localhost at 3201 to perform PUT operation at 2022-05-27 22:32:00.609 client time
+Client receive server response: Put key: bill, value: 2 pair in map from localhost/127.0.0.1 with PUT operation at 2022-05-27 22:32:00.610 client time
+Client send: PUT(Cindy, 3) from localhost at 3201 to perform PUT operation at 2022-05-27 22:32:05.108 client time
+Client receive server response: Put key: cindy, value: 3 pair in map from localhost/127.0.0.1 with PUT operation at 2022-05-27 22:32:05.109 client time
+Client send: PUT(Daniel, 4) from localhost at 3201 to perform PUT operation at 2022-05-27 22:32:10.084 client time
+Client receive server response: Put key: daniel, value: 4 pair in map from localhost/127.0.0.1 with PUT operation at 2022-05-27 22:32:10.086 client time
+Client send: get(alex    )  from localhost at 3201 to perform GET operation at 2022-05-27 22:32:30.309 client time
+Client receive server response: Didn't find matching value with given key: alex     from localhost/127.0.0.1 with GET operation at 2022-05-27 22:32:30.311 client time
+Client send: get(alex) from localhost at 3201 to perform GET operation at 2022-05-27 22:32:34.651 client time
+Client receive server response: Get value: 1 with given key: alex from localhost/127.0.0.1 with GET operation at 2022-05-27 22:32:34.653 client time
+Client send: get(adfaaf) from localhost at 3201 to perform GET operation at 2022-05-27 22:32:38.835 client time
+Client receive server response: Didn't find matching value with given key: adfaaf from localhost/127.0.0.1 with GET operation at 2022-05-27 22:32:38.837 client time
+Client send: put(alex,3) from localhost at 3201 to perform PUT operation at 2022-05-27 22:32:44.086 client time
+Client receive server response: Put key: alex, value: 3 pair in map from localhost/127.0.0.1 with PUT operation at 2022-05-27 22:32:44.087 client time
+Client send: get(alex) from localhost at 3201 to perform GET operation at 2022-05-27 22:32:48.712 client time
+Client receive server response: Get value: 3 with given key: alex from localhost/127.0.0.1 with GET operation at 2022-05-27 22:32:48.713 client time
+Client send: put(adfadaf,5) from localhost at 3201 to perform PUT operation at 2022-05-27 22:32:55.235 client time
+Client receive server response: Put key: adfadaf, value: 5 pair in map from localhost/127.0.0.1 with PUT operation at 2022-05-27 22:32:55.237 client time
+Client send: delete(alex) from localhost at 3201 to perform DELETE operation at 2022-05-27 22:33:00.399 client time
+Client receive server response: Delete value: 3 with given key: alex from localhost/127.0.0.1 with DELETE operation at 2022-05-27 22:33:00.401 client time
+Client send: get(alex) from localhost at 3201 to perform GET operation at 2022-05-27 22:33:04.326 client time
+Client receive server response: Didn't find matching value with given key: alex from localhost/127.0.0.1 with GET operation at 2022-05-27 22:33:04.327 client time
+Client send: delete(adfadaf) from localhost at 3201 to perform DELETE operation at 2022-05-27 22:33:09.590 client time
+Client receive server response: Delete value: 5 with given key: adfadaf from localhost/127.0.0.1 with DELETE operation at 2022-05-27 22:33:09.591 client time
+Client send: get(alex) from localhost at 3201 to perform GET operation at 2022-05-27 22:33:26.598 client time
+Client receive server response: Didn't find matching value with given key: alex from localhost/127.0.0.1 with GET operation at 2022-05-27 22:33:26.626 client time
+Client quit at 2022-05-27 22:33:50.091 client time
+Client send: put(alex,1) from localhost at 3201 to perform PUT operation at 2022-05-27 22:34:19.015 client time
+Client receive server response: Put key: alex, value: 1 pair in map from localhost/127.0.0.1 with PUT operation at 2022-05-27 22:34:19.016 client time
+Client quit at 2022-05-27 22:34:45.047 client time
+Client send: put() from localhost at 3201 to perform PUT operation at 2022-05-27 22:35:06.511 client time
+Client get: SocketTimeoutException: Receive timed out at 2022-05-27 22:35:26.538 client time
+Client send: put() from localhost at 3201 to perform PUT operation at 2022-05-27 22:36:06.241 client time
+Client send: put() from localhost at 3201 to perform PUT operation at 2022-05-27 22:36:21.694 client time
+Client get: SocketTimeoutException: Receive timed out at 2022-05-27 22:36:41.722 client time
+Client send: put(alex,1) from localhost at 3201 to perform PUT operation at 2022-05-28 10:53:29.575 client time
+Client receive server response: Put key: alex, value: 1 pair in map from localhost/127.0.0.1 with PUT operation at 2022-05-28 10:53:29.670 client time
+Client send: put(bill, 2) from localhost at 3201 to perform PUT operation at 2022-05-28 10:53:35.874 client time
+Client receive server response: Put key: bill, value: 2 pair in map from localhost/127.0.0.1 with PUT operation at 2022-05-28 10:53:35.876 client time
+Client send: PUT(Cindy, 3) from localhost at 3201 to perform PUT operation at 2022-05-28 10:53:41.026 client time
+Client receive server response: Put key: cindy, value: 3 pair in map from localhost/127.0.0.1 with PUT operation at 2022-05-28 10:53:41.027 client time
+Client send: PUT(Daniel, 4) from localhost at 3201 to perform PUT operation at 2022-05-28 10:53:46.380 client time
+Client receive server response: Put key: daniel, value: 4 pair in map from localhost/127.0.0.1 with PUT operation at 2022-05-28 10:53:46.382 client time
+Client send: put(elles,5) from localhost at 3201 to perform PUT operation at 2022-05-28 10:53:58.956 client time
+Client receive server response: Put key: elles, value: 5 pair in map from localhost/127.0.0.1 with PUT operation at 2022-05-28 10:53:58.958 client time
+Client send: get(alex    ) from localhost at 3201 to perform GET operation at 2022-05-28 10:54:07.371 client time
+Client receive server response: Didn't find matching value with given key: alex     from localhost/127.0.0.1 with GET operation at 2022-05-28 10:54:07.373 client time
+Client send: get(alex) from localhost at 3201 to perform GET operation at 2022-05-28 10:54:12.772 client time
+Client receive server response: Get value: 1 with given key: alex from localhost/127.0.0.1 with GET operation at 2022-05-28 10:54:12.774 client time
+Client send: get(adfaaf) from localhost at 3201 to perform GET operation at 2022-05-28 10:54:18.509 client time
+Client receive server response: Didn't find matching value with given key: adfaaf from localhost/127.0.0.1 with GET operation at 2022-05-28 10:54:18.510 client time
+Client send: put(alex,3) from localhost at 3201 to perform PUT operation at 2022-05-28 10:54:24.247 client time
+Client receive server response: Put key: alex, value: 3 pair in map from localhost/127.0.0.1 with PUT operation at 2022-05-28 10:54:24.249 client time
+Client send: get(alex) from localhost at 3201 to perform GET operation at 2022-05-28 10:54:29.197 client time
+Client receive server response: Get value: 3 with given key: alex from localhost/127.0.0.1 with GET operation at 2022-05-28 10:54:29.199 client time
+Client send: put(adfadaf,5) from localhost at 3201 to perform PUT operation at 2022-05-28 10:54:34.394 client time
+Client receive server response: Put key: adfadaf, value: 5 pair in map from localhost/127.0.0.1 with PUT operation at 2022-05-28 10:54:34.395 client time
+Client send: delete(alex) from localhost at 3201 to perform DELETE operation at 2022-05-28 10:54:39.479 client time
+Client receive server response: Delete value: 3 with given key: alex from localhost/127.0.0.1 with DELETE operation at 2022-05-28 10:54:39.480 client time
+Client send: get(alex) from localhost at 3201 to perform GET operation at 2022-05-28 10:54:44.518 client time
+Client receive server response: Didn't find matching value with given key: alex from localhost/127.0.0.1 with GET operation at 2022-05-28 10:54:44.520 client time
+Client send: delete(adfafafaaaaa) from localhost at 3201 to perform DELETE operation at 2022-05-28 10:54:49.986 client time
+Client receive server response: Didn't find matching value with given key: adfafafaaaaa from localhost/127.0.0.1 with DELETE operation at 2022-05-28 10:54:49.988 client time
+Client send: delete(bill) from localhost at 3201 to perform DELETE operation at 2022-05-28 10:55:00.943 client time
+Client receive server response: Delete value: 2 with given key: bill from localhost/127.0.0.1 with DELETE operation at 2022-05-28 10:55:00.945 client time
+Client send: delete(Cindy) from localhost at 3201 to perform DELETE operation at 2022-05-28 10:55:08.638 client time
+Client receive server response: Delete value: 3 with given key: cindy from localhost/127.0.0.1 with DELETE operation at 2022-05-28 10:55:08.639 client time
+Client send: get(bill) from localhost at 3201 to perform GET operation at 2022-05-28 10:55:12.081 client time
+Client receive server response: Didn't find matching value with given key: bill from localhost/127.0.0.1 with GET operation at 2022-05-28 10:55:12.082 client time
+Client send: get(Cindy  ) from localhost at 3201 to perform GET operation at 2022-05-28 10:55:21.824 client time
+Client receive server response: Didn't find matching value with given key: cindy   from localhost/127.0.0.1 with GET operation at 2022-05-28 10:55:21.825 client time
+Client quit at 2022-05-28 10:55:29.789 client time
+Client send: get(alex) from localhost at 3201 to perform GET operation at 2022-05-28 10:57:33.198 client time
+Client receive server response: Didn't find matching value with given key: alex from localhost/127.0.0.1 with GET operation at 2022-05-28 10:57:33.232 client time
+Client send: put() from localhost at 3201 to perform PUT operation at 2022-05-28 10:57:44.181 client time
+Client get: SocketTimeoutException: Receive timed out at 2022-05-28 10:58:04.182 client time

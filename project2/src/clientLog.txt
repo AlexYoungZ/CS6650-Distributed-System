@@ -55,3 +55,48 @@ Client receive server response: Didn't find matching value with given key: eric 
 Client get: java.lang.ArrayIndexOutOfBoundsException: Index 1 out of bounds for length 1 at 2022-06-10 22:40:08.322 client time
 Client send: adfafdfafd from MacBook-Pro-5.local at 127.0.0.1 to perform No valid operation operation at 2022-06-10 22:40:38.595 client time
 Client receive server response:  Received malformed request of length 10 from 192.168.1.66 from localhost with No valid operation operation at 2022-06-10 22:40:38.606 client time
+Client get: java.lang.StringIndexOutOfBoundsException: begin 0, end -1, length 3 at 2022-06-16 23:12:32.469 client time
+Client send: adfafdaf from MacBook-Pro-5.local at 127.0.0.1 to perform No valid operation operation at 2022-06-16 23:13:18.277 client time
+Client receive server response:  Received malformed request of length 8 from 127.0.0.1 from localhost with No valid operation operation at 2022-06-16 23:13:18.289 client time
+Client get: java.lang.StringIndexOutOfBoundsException: begin 0, end -1, length 3 at 2022-06-17 10:04:10.022 client time
+Client get: java.lang.StringIndexOutOfBoundsException: begin 0, end -1, length 3 at 2022-06-17 10:04:58.789 client time
+Client send: dafafdafd from MacBook-Pro-5.local at 192.168.1.66 to perform No valid operation operation at 2022-06-17 19:14:49.678 client time
+Client receive server response:  Received malformed request of length 9 from 192.168.1.66 from localhost with No valid operation operation at 2022-06-17 19:14:49.695 client time
+Client get: java.lang.StringIndexOutOfBoundsException: begin 0, end -1, length 3 at 2022-06-17 19:14:54.207 client time
+Client get: java.lang.StringIndexOutOfBoundsException: begin 0, end -1, length 3 at 2022-06-17 19:21:41.738 client time
+Client send: put(alex,123) from MacBook-Pro-5.local at 127.0.0.1 to perform PUT operation at 2022-06-17 19:27:50.207 client time
+Client receive server response: Put key: alex, value: 123 pair in map from localhost with PUT operation at 2022-06-17 19:27:50.217 client time
+Client send: dkaljfkaf from MacBook-Pro-5.local at 127.0.0.1 to perform No valid operation operation at 2022-06-17 19:28:13.245 client time
+Client receive server response:  Received malformed request of length 9 from 192.168.1.66 from localhost with No valid operation operation at 2022-06-17 19:28:13.246 client time
+Client get: java.lang.StringIndexOutOfBoundsException: begin 0, end -1, length 3 at 2022-06-17 19:29:16.385 client time
+Client get: java.lang.StringIndexOutOfBoundsException: begin 0, end -1, length 3 at 2022-06-17 19:39:45.419 client time
+Client send: get(alex) from MacBook-Pro-5.local at 192.168.1.66 to perform GET operation at 2022-06-17 19:39:56.613 client time
+Client receive server response: Get value: 123 with given key: alex from localhost with GET operation at 2022-06-17 19:39:56.622 client time
+Client send: quit from MacBook-Pro-5.local at 192.168.1.66 to perform No valid operation operation at 2022-06-17 19:40:01.736 client time
+Client receive server response:  Received quit request from 192.168.1.66 from localhost with No valid operation operation at 2022-06-17 19:40:01.737 client time
+Client quit at 2022-06-17 19:40:01.737 client time
+Client send: hi from MacBook-Pro-5.local at 127.0.0.1 to perform No valid operation operation at 2022-06-17 19:52:10.989 client time
+Client receive server response:  Received malformed request of length 2 from 127.0.0.1 from localhost with No valid operation operation at 2022-06-17 19:52:10.998 client time
+Client send: get(alex) from MacBook-Pro-5.local at 127.0.0.1 to perform GET operation at 2022-06-17 19:52:29.693 client time
+Client receive server response: Didn't find matching value with given key: alex from localhost with GET operation at 2022-06-17 19:52:29.702 client time
+Client send: put(alex,123) from MacBook-Pro-5.local at 127.0.0.1 to perform PUT operation at 2022-06-17 19:52:35.939 client time
+Client receive server response: Put key: alex, value: 123 pair in map from localhost with PUT operation at 2022-06-17 19:52:35.940 client time
+Client send: get(alex) from MacBook-Pro-5.local at 127.0.0.1 to perform GET operation at 2022-06-17 19:52:39.739 client time
+Client receive server response: Get value: 123 with given key: alex from localhost with GET operation at 2022-06-17 19:52:39.740 client time
+Client get: java.lang.StringIndexOutOfBoundsException: begin 0, end -1, length 3 at 2022-06-17 19:52:43.334 client time
+Client get: java.lang.StringIndexOutOfBoundsException: begin 0, end -1, length 3 at 2022-06-17 19:52:46.630 client time
+Client send: quit from MacBook-Pro-5.local at 127.0.0.1 to perform No valid operation operation at 2022-06-17 19:52:49.380 client time
+Client receive server response:  Received quit request from 127.0.0.1 from localhost with No valid operation operation at 2022-06-17 19:52:49.381 client time
+Client quit at 2022-06-17 19:52:49.381 client time
+Client send: quit from MacBook-Pro-5.local at 127.0.0.1 to perform No valid operation operation at 2022-06-17 19:52:52.091 client time
+Client receive server response:  Received quit request from 127.0.0.1 from localhost with No valid operation operation at 2022-06-17 19:52:52.092 client time
+Client quit at 2022-06-17 19:52:52.092 client time
+Client send:  from MacBook-Pro-5.local at 127.0.0.1 to perform No valid operation operation at 2022-06-17 19:52:56.431 client time
+Client receive server response:  Received malformed request of length 0 from 127.0.0.1 from localhost with No valid operation operation at 2022-06-17 19:52:56.438 client time
+Client send:  from MacBook-Pro-5.local at 127.0.0.1 to perform No valid operation operation at 2022-06-17 19:52:59.546 client time
+Client receive server response:  Received malformed request of length 0 from 127.0.0.1 from localhost with No valid operation operation at 2022-06-17 19:52:59.547 client time
+Client send: quit from MacBook-Pro-5.local at 127.0.0.1 to perform No valid operation operation at 2022-06-17 19:53:00.765 client time
+Client receive server response:  Received quit request from 127.0.0.1 from localhost with No valid operation operation at 2022-06-17 19:53:00.766 client time
+Client quit at 2022-06-17 19:53:00.766 client time
+Client send: ldkajfa from MacBook-Pro-5.local at 192.168.1.66 to perform No valid operation operation at 2022-06-17 20:16:51.994 client time
+Client receive server response:  Received malformed request of length 7 from 127.0.0.1 from localhost with No valid operation operation at 2022-06-17 20:16:52.006 client time

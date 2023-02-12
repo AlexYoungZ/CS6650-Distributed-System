@@ -1,0 +1,4 @@
+Server receive: get(alex) from /127.0.0.1 at 61534 and perform GET operation at 2022-05-30 16:37:45.061 server time with server response: Didn't find matching value with given key: alex
+Server receive: put(alex,1) from /127.0.0.1 at 61534 and perform PUT operation at 2022-05-30 16:37:49.455 server time with server response: Put key: alex, value: 1 pair in map
+Server receive: put(alex,1) from 127.0.0.1 at 3201 and perform PUT operation at 2022-05-30 16:38:16.185 server time with server response: Put key: alex, value: 1 pair in map
+Server receive: quit from 127.0.0.1 at 3201 and perform No operation operation at 2022-05-30 16:38:18.434 server time with server response:  Received quit request from 127.0.0.1 : 3201

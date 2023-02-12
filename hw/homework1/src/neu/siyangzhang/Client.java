@@ -11,14 +11,16 @@ public class Client {
       System.exit(1);
     }
 
+    // assignment to String and int variables from args inside the try block as well so that is
+    // there is an exception (Such as assigning a string value to int variable), it can handle the
+    // exception gracefully in the catch block
 
+    try {
+      String hostname = args[0];
+      // System.out.println("hostname is: "+hostname);
 
-    String hostname = args[0];
-    // System.out.println("hostname is: "+hostname);
-
-    int port = Integer.parseInt(args[1]);
-
-    try (Socket socket = new Socket(hostname, port)) { // create socket
+      int port = Integer.parseInt(args[1]);
+      Socket socket = new Socket(hostname, port); // create socket
       Console console = System.console(); // create console to interact
       String request;
 
@@ -51,13 +53,15 @@ public class Client {
       writer.close();
       reader.close();
 
-
     } catch (SocketException socketException) { // socket and io exception handle
       System.out.println("Socket exception: " + socketException.getMessage());
       socketException.printStackTrace();
     } catch (IOException ioException) {
       System.out.println("IO exception: " + ioException.getMessage());
       ioException.printStackTrace();
+    } catch (NumberFormatException numberFormatException) {
+      System.out.println("Number format exception: " + numberFormatException.getMessage());
+      numberFormatException.printStackTrace();
     }
   }
 }

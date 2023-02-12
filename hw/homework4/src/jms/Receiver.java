@@ -18,7 +18,7 @@ public class Receiver {
 
     // lookup the queue connection factory
     QueueConnectionFactory conFactory =
-        (QueueConnectionFactory) context.lookup("iiop://localhost:3200/queue/connectionFactory");
+        (QueueConnectionFactory) context.lookup("queue/connectionFactory");
 
     // create a queue connection
     QueueConnection queConn = conFactory.createQueueConnection();

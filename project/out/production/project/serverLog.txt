@@ -34,3 +34,6 @@ Server receive: get(bill) from /127.0.0.1 at 63239 and perform GET operation at 
 Server receive: get(Cindy  ) from /127.0.0.1 at 63239 and perform GET operation at 2022-05-28 10:55:21.825 server time with server response: Didn't find matching value with given key: cindy  
 Server receive: get(alex) from /127.0.0.1 at 50277 and perform GET operation at 2022-05-28 10:57:33.230 server time with server response: Didn't find matching value with given key: alex
 Server get: java.lang.ArrayIndexOutOfBoundsException: Index 1 out of bounds for length 1 at 2022-05-28 10:57:44.183 server time
+Server receive: put(alex,1) from 127.0.0.1 at 3201 and perform PUT operation at 2022-05-30 16:32:39.736 server time with server response: Put key: alex, value: 1 pair in map
+Server receive: quit from 127.0.0.1 at 3201 and perform No operation operation at 2022-05-30 16:32:42.904 server time with server response:  Received quit request from 127.0.0.1 : 3201
+Server receive: get(alex) from /127.0.0.1 at 53701 and perform GET operation at 2022-05-30 16:33:09.473 server time with server response: Didn't find matching value with given key: alex

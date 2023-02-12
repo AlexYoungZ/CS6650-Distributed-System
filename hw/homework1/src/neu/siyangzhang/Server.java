@@ -13,10 +13,11 @@ public class Server {
       System.exit(1);
     }
 
-    int port = Integer.parseInt(args[0]);
+    try {
+      int port = Integer.parseInt(args[0]);
 
-    try (ServerSocket serverSocket = new ServerSocket(port) // create server socket on given port
-    ) {
+      ServerSocket serverSocket = new ServerSocket(port); // create server socket on given port
+
       System.out.println("Server is listening on port: " + port);
 
       Socket socket = serverSocket.accept(); // wait and accept
@@ -61,6 +62,9 @@ public class Server {
     } catch (NullPointerException nullPointerException) {
       System.out.println("Client input is invalid: " + nullPointerException.getMessage());
       nullPointerException.printStackTrace();
+    } catch (NumberFormatException numberFormatException) {
+      System.out.println("Number format exception: " + numberFormatException.getMessage());
+      numberFormatException.printStackTrace();
     }
   }
 }

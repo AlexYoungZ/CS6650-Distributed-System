@@ -1,48 +1,53 @@
-import javax.naming.InitialContext;
-
-import javax.jms.DeliveryMode;
-import javax.jms.Queue;
-import javax.jms.QueueConnection;
-import javax.jms.QueueConnectionFactory;
-import javax.jms.QueueSender;
-import javax.jms.QueueSession;
+import javax.jms.Connection;
+import javax.jms.ConnectionFactory;
+import javax.jms.Destination;
+import javax.jms.JMSException;
+import javax.jms.MessageProducer;
 import javax.jms.Session;
 import javax.jms.TextMessage;
+import org.apache.activemq.ActiveMQConnection;
+import org.apache.activemq.ActiveMQConnectionFactory;
 
 public class Sender {
-  public static void main(String[] args) throws Exception {
-    // get the initial context
-    InitialContext context = new InitialContext();
+  /*
+   * URL of the JMS server. DEFAULT_BROKER_URL will just mean that JMS server is on localhost
+   *
+   * default broker URL is : tcp://localhost:61616"
+   *
+   * admin console will run at http://localhost:8161/admin
+   */
+  private static final String serverAddress = ActiveMQConnection.DEFAULT_BROKER_URL;
 
-    // lookup the queue object
-    Queue queue = (Queue) context.lookup("queue/queue0");
+  /*
+   * Queue Name.You can create any/many queue names as per your requirement.
+   */
+  private static final String queueName = "queue1";
 
-    // lookup the queue connection factory
-    //		QueueConnectionFactory conFactory = (QueueConnectionFactory) context.lookup
-    // ("queue/connectionFactory");
-    QueueConnectionFactory conFactory =
-        (QueueConnectionFactory) context.lookup("iiop://localhost:3200/queue/connectionFactory");
+  public static void main(String[] args) throws JMSException {
+    System.out.println("JMS Server is running on: " + serverAddress);
+
+    ConnectionFactory connectionFactory = new ActiveMQConnectionFactory(serverAddress);
 
     // create a queue connection
-    QueueConnection queConn = conFactory.createQueueConnection();
+    Connection connection = connectionFactory.createConnection();
+    connection.start();
 
-    // create a queue session
-    QueueSession queSession = queConn.createQueueSession(false, Session.DUPS_OK_ACKNOWLEDGE);
+    // create a queue session to send/receive message
+    // set delivery mode to AUTO_ACKNOWLEDGE in case server crashes and guarantee delivery
+    Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
 
-    // create a queue sender
-    QueueSender queueSender = queSession.createSender(queue);
-    queueSender.setDeliveryMode(DeliveryMode.NON_PERSISTENT);
+    // create a queue on server
+    Destination destination = session.createQueue(queueName);
 
-    // create a simple message to say "Hello World"
-    TextMessage message = queSession.createTextMessage("Hello World");
+    //
+    MessageProducer producer = session.createProducer(destination);
+    TextMessage message = session.createTextMessage("Mail content: hello word!");
 
-    // send the message
-    queueSender.send(message);
+    producer.send(message);
 
-    // print what we did
     System.out.println("Message Sent: " + message.getText());
 
-    // close the queue connection
-    queConn.close();
+    // close the connection
+    connection.close();
   }
 }

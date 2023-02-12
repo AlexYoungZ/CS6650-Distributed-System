@@ -22,23 +22,22 @@ public class UDPClient {
       System.out.println("Example: java Client localhost 3200");
       System.exit(1);
     }
-
-    String hostname = args[0];
-    // System.out.println("hostname is: "+hostname);
-
-    // initialize ClientLogger
-    ClientLogger clientLogger;
-    DatagramPacket requestPacket;
-    DatagramPacket responsePacket;
+    // initialize exception message string
     String exception;
-    String request;
-    String response;
-    String operation;
-    String message;
 
-    int port = Integer.parseInt(args[1]);
+    try {
+      String hostname = args[0];
+      // System.out.println("hostname is: "+hostname);
 
-    try { // create socket
+      DatagramPacket requestPacket;
+      DatagramPacket responsePacket;
+      String request;
+      String response;
+      String operation;
+      String message;
+
+      int port = Integer.parseInt(args[1]);
+      // create socket
       DatagramSocket clientSocket = new DatagramSocket();
       // timeout mechanism: set waiting time out to 20s
       // compared with single thread TCP, since UDP use datagram to transmit message, the timeout
@@ -60,11 +59,11 @@ public class UDPClient {
         if (request.length() != 0) {
           message = request.trim().toLowerCase();
 
-          if (message.contains("put") || message.contains("PUT")) {
+          if (message.contains("put")) {
             operation = "PUT";
-          } else if (message.contains("get") || message.contains("GET")) {
+          } else if (message.contains("get")) {
             operation = "GET";
-          } else if (message.contains("delete") || message.contains("DELETE")) {
+          } else if (message.contains("delete")) {
             operation = "DELETE";
           } else {
             operation = "No valid operation";
@@ -120,6 +119,11 @@ public class UDPClient {
       exception = ioException.toString();
       System.err.println("Network I/O exception: " + ioException.getMessage());
       //      ioException.printStackTrace();
+      ClientLogger.clientLoggingException(exception);
+    } catch (NumberFormatException numberFormatException) {
+      exception = numberFormatException.toString();
+      System.out.println("Number format exception: " + numberFormatException.getMessage());
+      //      numberFormatException.printStackTrace();
       ClientLogger.clientLoggingException(exception);
     }
   }

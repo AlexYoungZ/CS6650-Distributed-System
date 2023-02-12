@@ -61,7 +61,11 @@ Client receive message: thrid final hi
 
 Process finished with exit code 1
 ```
-
+Refer to screenshots within res folder:
+![install and start activeMQ](res/activemq.png)    
+![activeMQ queues](res/activeMQ1.png)    
+![Mailbox queue details](res/Mailbox.png)     
+![message details](res/messageDetail.png)     
 <h2>Step to run RMI</h2> 
 need 3 separate terminals to simulate registry, client and server:
 1. go to ```rmi``` directory, compile 4 java files like below: 
@@ -95,3 +99,5 @@ Then will see sorted integer array returned at client console like:
 MacBook-Pro-5:rmi siyangzhang$ java SorterClient
 [1, 1, 2, 3, 4, 5, 6, 12, 22, 222]
 ```
+See the screenshot below for consoles:
+![RMI-console](res/RMI.png)

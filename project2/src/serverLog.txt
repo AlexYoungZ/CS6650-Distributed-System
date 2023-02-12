@@ -25,3 +25,19 @@ Server receive: quit from 192.168.1.66 and perform No operation operation at 202
 Server receive: quit from 192.168.1.66 and perform No operation operation at 2022-06-10 22:33:53.844 server time with server response:  Received quit request from 192.168.1.66
 Server receive: get(eric) from 192.168.1.66 and perform GET operation at 2022-06-10 22:37:17.434 server time with server response: Didn't find matching value with given key: eric
 Server receive: adfafdfafd from 192.168.1.66 and perform No operation operation at 2022-06-10 22:40:38.559 server time with server response:  Received malformed request of length 10 from 192.168.1.66
+Server receive: adfafdaf from 127.0.0.1 and perform No operation operation at 2022-06-16 23:13:18.217 server time with server response:  Received malformed request of length 8 from 127.0.0.1
+Server receive: dafafdafd from 192.168.1.66 and perform No operation operation at 2022-06-17 19:14:49.620 server time with server response:  Received malformed request of length 9 from 192.168.1.66
+Server receive: put(alex,123) from 192.168.1.66 and perform PUT operation at 2022-06-17 19:27:50.173 server time with server response: Put key: alex, value: 123 pair in map
+Server receive: dkaljfkaf from 192.168.1.66 and perform No operation operation at 2022-06-17 19:28:13.245 server time with server response:  Received malformed request of length 9 from 192.168.1.66
+Server receive: get(alex) from 192.168.1.66 and perform GET operation at 2022-06-17 19:39:56.611 server time with server response: Get value: 123 with given key: alex
+Server receive: quit from 192.168.1.66 and perform No operation operation at 2022-06-17 19:40:01.736 server time with server response:  Received quit request from 192.168.1.66
+Server receive: hi from 127.0.0.1 and perform No operation operation at 2022-06-17 19:52:10.933 server time with server response:  Received malformed request of length 2 from 127.0.0.1
+Server receive: get(alex) from 127.0.0.1 and perform GET operation at 2022-06-17 19:52:29.660 server time with server response: Didn't find matching value with given key: alex
+Server receive: put(alex,123) from 127.0.0.1 and perform PUT operation at 2022-06-17 19:52:35.939 server time with server response: Put key: alex, value: 123 pair in map
+Server receive: get(alex) from 127.0.0.1 and perform GET operation at 2022-06-17 19:52:39.739 server time with server response: Get value: 123 with given key: alex
+Server receive: quit from 127.0.0.1 and perform No operation operation at 2022-06-17 19:52:49.379 server time with server response:  Received quit request from 127.0.0.1
+Server receive: quit from 127.0.0.1 and perform No operation operation at 2022-06-17 19:52:52.090 server time with server response:  Received quit request from 127.0.0.1
+Server receive:  from 127.0.0.1 and perform No operation operation at 2022-06-17 19:52:56.401 server time with server response:  Received malformed request of length 0 from 127.0.0.1
+Server receive:  from 127.0.0.1 and perform No operation operation at 2022-06-17 19:52:59.545 server time with server response:  Received malformed request of length 0 from 127.0.0.1
+Server receive: quit from 127.0.0.1 and perform No operation operation at 2022-06-17 19:53:00.765 server time with server response:  Received quit request from 127.0.0.1
+Server receive: ldkajfa from 127.0.0.1 and perform No operation operation at 2022-06-17 20:16:51.930 server time with server response:  Received malformed request of length 7 from 127.0.0.1

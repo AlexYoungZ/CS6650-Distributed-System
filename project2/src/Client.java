@@ -5,6 +5,7 @@ import java.rmi.NotBoundException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.net.InetAddress;
+import java.util.Objects;
 
 /** The Client to send request. */
 public class Client {
@@ -19,11 +20,19 @@ public class Client {
       System.err.println("Example: java Client <server host> <registry port>");
       System.exit(1);
     }
+    try {
+      // get server host and registry port from client input
+      String hostName = args[0];
+      int registryPort = Integer.parseInt(args[1]);
+      new Client(hostName, registryPort);
 
-    // get server host and registry port from client input
-    String hostName = args[0];
-    int registryPort = Integer.parseInt(args[1]);
-    new Client(hostName, registryPort);
+    } catch (IOException ioException) {
+      System.out.println("IOException: " + ioException.getMessage());
+      ClientLogger.clientLoggingException(ioException.toString());
+    } catch (NotBoundException notBoundException) {
+      System.out.println("NotBoundException: " + notBoundException.getMessage());
+      ClientLogger.clientLoggingException(notBoundException.toString());
+    }
   }
 
   /**
@@ -33,31 +42,32 @@ public class Client {
    * @param registryPort the registry port
    * @throws IOException the io exception
    */
-  public Client(String host, int registryPort) throws IOException {
-    try {
-      // create console to interact
-      Console console = System.console();
+  public Client(String host, int registryPort) throws IOException, NotBoundException {
 
-      // get the rmi registry with given hostname and port number
-      Registry registry = LocateRegistry.getRegistry(host, registryPort);
+    // create console to interact
+    Console console = System.console();
 
-      // get the server hosting concurrent hashmap service by look up from RMI registry
-      String serverName = "RPCServer";
-      RMIServer server = (RMIServer) registry.lookup(serverName);
+    // get the rmi registry with given hostname and port number
+    Registry registry = LocateRegistry.getRegistry(host, registryPort);
 
-      // initialize request, response and operation variables
-      String request;
-      String operation;
-      String message;
-      // get client ip and host for logging
-      InetAddress ip;
-      String localhost;
-      String localIP;
-      ip = InetAddress.getLocalHost();
-      localIP = ip.getHostAddress();
-      localhost = ip.getHostName();
+    // get the server hosting concurrent hashmap service by look up from RMI registry
+    String serverName = "RPCServer";
+    RMIServer server = (RMIServer) registry.lookup(serverName);
 
-      do {
+    // initialize request, response and operation variables
+    String request = null;
+    String operation;
+    String message;
+    // get client ip and host for logging
+    InetAddress ip;
+    String localhost;
+    String localIP;
+    ip = InetAddress.getLocalHost();
+    localIP = ip.getHostAddress();
+    localhost = ip.getHostName();
+
+    do {
+      try {
         // read user input
         request = console.readLine("Enter text: ");
         // request after formatting
@@ -96,22 +106,26 @@ public class Client {
         // display server response at client side
         System.out.println(response);
 
-      } while (!request.equals("quit"));
-      // when user input quit, close up
-      System.out.println("Closing connection");
-      ClientLogger.clientLoggingExit();
-
-      // exception handle and log
-    } catch (RemoteException remoteException) {
-      System.out.println("RemoteException: " + remoteException.getMessage());
-      ClientLogger.clientLoggingException(remoteException.toString());
-    } catch (NotBoundException | IOException exception) {
-      System.out.println(exception + exception.getMessage());
-      ClientLogger.clientLoggingException(exception.toString());
-    } catch (ArrayIndexOutOfBoundsException arrayIndexOutOfBoundsException) {
-      System.out.println(
-          "ArrayIndexOutOfBoundsException: " + arrayIndexOutOfBoundsException.getMessage());
-      ClientLogger.clientLoggingException(arrayIndexOutOfBoundsException.toString());
-    }
+        // NotBoundException
+        // exception handle and log
+      } catch (RemoteException remoteException) {
+        System.out.println("RemoteException: " + remoteException.getMessage());
+        ClientLogger.clientLoggingException(remoteException.toString());
+      } catch (IOException exception) {
+        System.out.println(exception + exception.getMessage());
+        ClientLogger.clientLoggingException(exception.toString());
+      } catch (ArrayIndexOutOfBoundsException arrayIndexOutOfBoundsException) {
+        System.out.println(
+            "ArrayIndexOutOfBoundsException: " + arrayIndexOutOfBoundsException.getMessage());
+        ClientLogger.clientLoggingException(arrayIndexOutOfBoundsException.toString());
+      } catch (StringIndexOutOfBoundsException stringIndexOutOfBoundsException) {
+        System.out.println(
+            "StringIndexOutOfBoundsException: " + stringIndexOutOfBoundsException.getMessage());
+        ClientLogger.clientLoggingException(stringIndexOutOfBoundsException.toString());
+      }
+    } while (!Objects.equals(request, "quit"));
+    // when user input quit, close up
+    System.out.println("Closing connection");
+    ClientLogger.clientLoggingExit();
   }
 }

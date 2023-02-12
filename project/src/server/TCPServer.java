@@ -31,10 +31,12 @@ public class TCPServer {
     // initialize exception
     String exception;
 
-    int port = Integer.parseInt(args[0]);
+    try {
+      int port = Integer.parseInt(args[0]);
 
-    try (ServerSocket serverSocket = new ServerSocket(port) // create server socket on given port
-    ) {
+      // create server socket on given port
+      ServerSocket serverSocket = new ServerSocket(port);
+
       System.out.println("Server is listening on port: " + port);
 
       while (true) {
@@ -103,6 +105,12 @@ public class TCPServer {
       exception = nullPointerException.toString();
       System.out.println("Client input is invalid: " + nullPointerException.getMessage());
       //      nullPointerException.printStackTrace();
+      ServerLogger.serverExceptionLogging(exception);
+    } catch (NumberFormatException numberFormatException) {
+      // handle string/integer convert exception when input port and host
+      exception = numberFormatException.toString();
+      System.out.println("Number format exception: " + numberFormatException.getMessage());
+      //      numberFormatException.printStackTrace();
       ServerLogger.serverExceptionLogging(exception);
     }
   }

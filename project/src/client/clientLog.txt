@@ -76,3 +76,21 @@ Client send: get(alex) from localhost at 3201 to perform GET operation at 2022-0
 Client receive server response: Didn't find matching value with given key: alex from localhost/127.0.0.1 with GET operation at 2022-05-28 10:57:33.232 client time
 Client send: put() from localhost at 3201 to perform PUT operation at 2022-05-28 10:57:44.181 client time
 Client get: SocketTimeoutException: Receive timed out at 2022-05-28 10:58:04.182 client time
+Client send: put(alex,1) from localhost at 3201 to perform PUT operation at 2022-05-30 16:32:39.631 client time
+Client receive server response: Server response: Put key: alex, value: 1 pair in map from 127.0.0.1 with PUT operation at 2022-05-30 16:32:39.760 client time
+Client send: quit from localhost at 3201 to perform No valid operation operation at 2022-05-30 16:32:42.900 client time
+Client receive server response: Server response:  Received quit request from 127.0.0.1 : 3201 from 127.0.0.1 with No valid operation operation at 2022-05-30 16:32:42.905 client time
+Client send: get(alex) from localhost at 3201 to perform GET operation at 2022-05-30 16:33:09.375 client time
+Client receive server response: Didn't find matching value with given key: alex from localhost/127.0.0.1 with GET operation at 2022-05-30 16:33:09.492 client time
+Client quit at 2022-05-30 16:33:12.917 client time
+Client get: ConnectException: Connection refused at 2022-06-17 10:07:25.905 client time
+Client get: ConnectException: Connection refused at 2022-06-17 10:07:32.917 client time
+Client get: ConnectException: Connection refused at 2022-06-17 10:07:38.129 client time
+Client get: ConnectException: Connection refused at 2022-06-17 10:07:47.534 client time
+Client get: ConnectException: Connection refused at 2022-06-17 10:25:02.517 client time
+Client get: ConnectException: Connection refused at 2022-06-17 10:25:11.380 client time
+Client get: ConnectException: Connection refused at 2022-06-17 10:25:49.426 client time
+Client send: padlaff from localhost at 3201 to perform No valid operation operation at 2022-06-17 10:25:54.479 client time
+Client receive server response: Server response:  Received malformed request of length 7 from 127.0.0.1 : 3201 from 127.0.0.1 with No valid operation operation at 2022-06-17 10:25:54.620 client time
+Client send: put from localhost at 3201 to perform PUT operation at 2022-06-17 10:26:08.827 client time
+Client receive server response: Invalid response from 127.0.0.1 with PUT operation at 2022-06-17 10:26:08.856 client time

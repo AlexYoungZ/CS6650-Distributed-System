@@ -29,9 +29,9 @@ public class UDPServer {
 
     String exception;
 
-    int port = Integer.parseInt(args[0]);
-
     try {
+      int port = Integer.parseInt(args[0]);
+
       // create server socket on given port
       DatagramSocket serverSocket = new DatagramSocket(port);
       System.out.println("Server is listening on port: " + port);
@@ -91,6 +91,12 @@ public class UDPServer {
       exception = nullPointerException.toString();
       System.out.println("Client input is invalid: " + nullPointerException.getMessage());
       //      nullPointerException.printStackTrace();
+      ServerLogger.serverExceptionLogging(exception);
+    } catch (NumberFormatException numberFormatException) {
+      // handle string/integer convert exception when input port and host
+      exception = numberFormatException.toString();
+      System.out.println("Number format exception: " + numberFormatException.getMessage());
+      //      numberFormatException.printStackTrace();
       ServerLogger.serverExceptionLogging(exception);
     }
   }
